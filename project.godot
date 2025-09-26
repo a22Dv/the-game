@@ -11,8 +11,19 @@ config_version=5
 [application]
 
 config/name="the-game"
+run/main_scene="uid://c3f4c6um8ieiu"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalManager="*res://globals/global_manager.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
 
 [rendering]
 

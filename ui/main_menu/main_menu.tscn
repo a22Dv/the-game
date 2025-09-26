@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3f4c6um8ieiu"]
+
+[ext_resource type="Script" uid="uid://0vvtdhoj2rfv" path="res://ui/main_menu/main_menu.gd" id="1_uhj5c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhj5c"]
+bg_color = Color(0.3019608, 0.3019608, 0.3019608, 1)
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_uhj5c")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uhj5c")
+
+[node name="Placeholder" type="HBoxContainer" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Placeholder"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 64
+text = "Game Title"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Placeholder"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.88
+alignment = 1
+
+[node name="Start" type="Button" parent="Placeholder/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Start"
+
+[node name="Quit" type="Button" parent="Placeholder/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Quit
+"
+
+[node name="Settings" type="Button" parent="Placeholder/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Settings
+"
+
+[connection signal="button_down" from="Placeholder/VBoxContainer/Start" to="." method="_on_start_button_down"]
+[connection signal="button_down" from="Placeholder/VBoxContainer/Quit" to="." method="_on_quit_button_down"]
+[connection signal="button_down" from="Placeholder/VBoxContainer/Settings" to="." method="_on_settings_button_down"]
