@@ -13,9 +13,9 @@ func _ready() -> void:
 	for st in vol_sliders.keys():
 		var slider: HSlider = vol_sliders[st]
 		slider.value = GlobalManager.get_state(st) * NORM
-		slider.drag_ended.connect(_on_vol_drag_ended.bind(st))
+		slider.value_changed.connect(_on_vol_drag_ended.bind(st))
 		
-func _on_vol_drag_ended(value_changed: bool, st: GlobalManager.StateType) -> void:
+func _on_vol_drag_ended(value_changed: float, st: GlobalManager.StateType) -> void:
 	if value_changed:
-		GlobalManager.set_state(st, vol_sliders[st].value / NORM)
+		GlobalManager.set_state(st, value_changed / NORM)
 		
