@@ -14,19 +14,19 @@ offset_bottom = 720.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_l1rk1")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 485.0
-offset_top = 272.0
-offset_right = 782.0
-offset_bottom = 397.0
+offset_left = 16.0
+offset_top = 23.0
+offset_right = 383.0
+offset_bottom = 148.0
 theme_override_font_sizes/normal_font_size = 72
-text = "Game"
+text = "Difficulty"
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="."]
-offset_left = 547.0
-offset_top = 413.0
-offset_right = 729.0
-offset_bottom = 466.0
+offset_left = 1033.0
+offset_top = 624.0
+offset_right = 1215.0
+offset_bottom = 677.0
 text = "Back to MainMenu"
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
