@@ -49,52 +49,48 @@ const _audio_file_type = {
 	AudioEntry.TEST_THEME : AudioEntryType.MUSIC
 }
 
-# ---------- PRIVATE ------------ #
+# ---------------------------------------- PRIVATE ----------------------------------------------- #
 
 const CONCURRENT_LIMIT: int = 15
 var concurrent: int = 0
+
+class ActiveEntry extends RefCounted:
+	var fade_ratio: float
+	var fade_state: AudioFadeState
+	var playback_type: AudioPlaybackType
+	var player: AudioStreamPlayer2D
+	var entry: AudioEntry
+	var entry_type: AudioEntryType
+
+var _active_entries: Array[ActiveEntry] = []
 var _audio_resources: Array[AudioStreamOggVorbis] = []
-var _active_fade_ratios: Array[float] = []
-var _active_fade_state: Array[AudioFadeState] = []
-var _active_resources_types: Array[AudioPlaybackType] = []
-var _active_resources_entries: Array[AudioEntry] = []
-var _active_resources: Array[AudioStreamPlayer2D] = []
-var _active_resources_entries_types: Array[AudioEntryType] = []
 	
 func _ready() -> void:
 	_audio_resources.resize(AudioEntry._AUDIO_ENTRY_COUNT)
-	_active_resources.resize(CONCURRENT_LIMIT)
-	_active_resources_types.resize(CONCURRENT_LIMIT)
-	_active_resources_entries.resize(CONCURRENT_LIMIT)
-	_active_fade_state.resize(CONCURRENT_LIMIT)
-	_active_fade_ratios.resize(CONCURRENT_LIMIT)
-	_active_resources_entries_types.resize(CONCURRENT_LIMIT)
+	_active_entries.resize(CONCURRENT_LIMIT)
 
 ## Clears the entry at specified index and decrements concurrent counter.
 func _clear_entry(index: int) -> void:
-	_active_fade_ratios[index] = 0.0
-	_active_fade_state[index] = AudioFadeState.NONE
-	_active_resources_entries[index] = AudioEntry.TEST_THEME
-	_active_resources_types[index] = AudioPlaybackType.DEFAULT
-	_active_resources_entries_types[index] = AudioEntryType.MUSIC
-	_active_resources[index].queue_free()
-	_active_resources[index] = null
+	_active_entries[index].player.queue_free()
+	_active_entries[index] = null
 	concurrent -= 1
 
 ## Decides what to do when stream ends. Looping does not 
 ## incur another fade effect, this is by design.
 func _stream_ended(index: int, loop: bool) -> void:
 	if loop:
-		_active_resources[index].play()
+		_active_entries[index].player.play()
 		return
 	_clear_entry(index)
 	
 func _process(delta: float) -> void:
-	for i in range(CONCURRENT_LIMIT):
-		if not _active_resources[i]:
+	var i: int = -1
+	for entry in _active_entries:
+		i += 1
+		if not entry:
 			continue
 		var set_vol: float =  0.0
-		match _active_resources_entries_types[i]:
+		match entry.entry_type:
 			AudioEntryType.MUSIC: set_vol = GlobalManager.get_state(
 				GlobalManager.StateType.MUSIC_VOLUME
 			)
@@ -102,109 +98,97 @@ func _process(delta: float) -> void:
 				GlobalManager.StateType.SFX_VOLUME
 			)
 		set_vol *= GlobalManager.get_state(GlobalManager.StateType.MASTER_VOLUME)
-		match _active_fade_state[i]:
+		match entry.fade_state:
 			AudioFadeState.FADING_IN: 
-				if _active_resources[i].volume_linear >= set_vol:
-					_active_resources[i].volume_linear = set_vol
-					_active_fade_state[i] = AudioFadeState.NONE
+				if entry.player.volume_linear >= set_vol:
+					entry.player.volume_linear = set_vol
+					entry.fade_state = AudioFadeState.NONE
 					continue
-				_active_resources[i].volume_linear += _active_fade_ratios[i] * delta
+				entry.player.volume_linear += entry.fade_ratio * delta
 			AudioFadeState.FADING_OUT: 
-				if _active_resources[i].volume_linear <= 0.0:
+				if entry.player.volume_linear <= 0.0:
 					_clear_entry(i)
-				_active_resources[i].volume_linear -= _active_fade_ratios[i] * delta
+					continue
+				entry.player.volume_linear -= entry.fade_ratio * delta
 			AudioFadeState.NONE:
-				_active_resources[i].volume_linear = set_vol
-		if _active_resources_types[i] in no_fade:
+				entry.player.volume_linear = set_vol
+				continue
+		if entry.playback_type in no_fade:
 			continue
-		var stream_length: float =  _active_resources[i].stream.get_length()
-		var crnt_time: float = _active_resources[i].get_playback_position()
+		var stream_length: float = entry.player.stream.get_length()
+		var crnt_time: float = entry.player.get_playback_position()
 		var diff: float = stream_length - crnt_time
-		var start_fade_out: bool = diff <= 1.0 / _active_fade_ratios[i]
+		var start_fade_out: bool = diff <= 1.0 / entry.fade_ratio
+		if start_fade_out and entry.playback_type < AudioPlaybackType.LOOP: 
+			# Only non-looping fade types.
+			entry.fade_state = AudioFadeState.FADING_OUT
 		
-		# Only non-looping fade types.
-		if start_fade_out and _active_resources_types[i] < AudioPlaybackType.LOOP: 
-			_active_fade_state[i] = AudioFadeState.FADING_OUT
-		
-# ----------- PUBLIC ------------- #
+# ---------------------------------------- PUBLIC ----------------------------------------------- #
 
 ## Plays an instance of the audio `entry` that was specified.
 func play(entry: AudioEntry, playback_type = AudioPlaybackType.DEFAULT, fade_duration = 1.0) -> void:
 	if concurrent == CONCURRENT_LIMIT:
 		return
-	if not _audio_resources[entry]:
-		_audio_resources[entry] = load(_audio_file_paths[entry])
-	var stream_player: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
-	get_tree().root.add_child(stream_player)
+	if not _audio_resources[entry]: _audio_resources[entry] = load(_audio_file_paths[entry])
 	
 	var i: int = 0
-	for stream in _active_resources:
-		if not stream:
-			break
+	for ent in _active_entries:
+		if not ent: break
 		i += 1
-	stream_player.stream = _audio_resources[entry]
-	print(playback_type >= AudioPlaybackType.LOOP)
-	stream_player.finished.connect(_stream_ended.bind(i, playback_type >= AudioPlaybackType.LOOP))
-	stream_player.volume_linear = 0.0
-	stream_player.play()
-	
-	_active_resources[i] = stream_player
-	_active_resources_entries[i] = entry
-	_active_resources_types[i] = playback_type
-	_active_resources_entries_types[i] = _audio_file_type[entry]
-	
-	if playback_type not in no_fade: 
-		_active_fade_state[i] = AudioFadeState.FADING_IN
-		
+	var active_entry: ActiveEntry = ActiveEntry.new()
+	active_entry.player = AudioStreamPlayer2D.new()
+	active_entry.player.stream = _audio_resources[entry]
+	active_entry.player.finished.connect(
+		_stream_ended.bind(i, playback_type >= AudioPlaybackType.LOOP)
+	)
+	active_entry.player.volume_linear = 0.0
+	active_entry.playback_type = playback_type
+	active_entry.entry_type = _audio_file_type[entry]
+	active_entry.entry = entry
+	if playback_type not in no_fade:
+		active_entry.fade_state = AudioFadeState.FADING_IN
+		active_entry.fade_ratio = 1.0 / fade_duration
+	else:
 		# NOTE: Fade ratio is fixed at start-up. So I took a default with the max
 		# of 1.0. This can cause the fade to complete earlier for lower volumes.
-		_active_fade_ratios[i] = 1.0 / fade_duration
-	else: 
-		_active_fade_state[i] = AudioFadeState.NONE
-	
+		active_entry.fade_state = AudioFadeState.NONE
+		active_entry.fade_ratio = 0.0
+	get_tree().root.add_child(active_entry.player)
+	active_entry.player.play()
+	_active_entries[i] = active_entry
 	concurrent += 1
 	
 ## Stops one playing instance of audio of type `entry`.
 func stop_one(entry: AudioEntry, immediate = false) -> void:
-	var i: int = 0
-	for res in _active_resources:
-		if not res:
-			i += 1
-			continue
-		var stop: bool = immediate or _active_resources_types[i] in no_fade
-		var matched: bool = _active_resources_entries[i] == entry
+	var i: int = -1
+	for ent in _active_entries:
+		i += 1
+		if not ent: continue
+		var stop: bool = immediate or ent.playback_type in no_fade
+		var matched: bool = ent.entry == entry
 		if matched and stop:
 			_clear_entry(i)
 			break
 		elif matched:
-			_active_fade_state[i] = AudioFadeState.FADING_OUT
+			ent.fade_state = AudioFadeState.FADING_OUT
 			break
-		i += 1
 
 ## Stops all playing audio of type `entry`.
 func stop_type(entry: AudioEntry, immediate = false) -> void:
-	var i: int = 0
-	for res in _active_resources:
-		if not res:
-			i += 1
-			continue
-		var stop: bool = immediate or _active_resources_types[i] in no_fade
-		var matched: bool = _active_resources_entries[i] == entry
-		if matched and stop:
-			_clear_entry(i)
-		elif matched:
-			_active_fade_state[i] = AudioFadeState.FADING_OUT
+	var i: int = -1
+	for ent in _active_entries:
 		i += 1
+		if not ent: continue
+		var stop: bool = immediate or ent.playback_type in no_fade
+		var matched: bool = ent.entry == entry
+		if matched and stop: _clear_entry(i)
+		elif matched: ent.fade_state = AudioFadeState.FADING_OUT
 
 ## Stops all audio.
 func stop_all(immediate = false) -> void:
-	var i: int = 0
-	for res in _active_resources:
-		if not res:
-			i += 1
-			continue
-		if immediate or _active_resources_types[i] in no_fade:
-			_clear_entry(i)
-		else:
-			_active_fade_state[i] = AudioFadeState.FADING_OUT
+	var i: int = -1
+	for ent in _active_entries:
 		i += 1
+		if not ent: continue
+		if immediate or ent.playback_type in no_fade: _clear_entry(i)
+		else: ent.fade_state = AudioFadeState.FADING_OUT
