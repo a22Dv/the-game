@@ -1,5 +1,7 @@
 class_name Queue extends RefCounted
 
+## Queue data structure. (FIFO)
+
 var _data: Array[Variant] = []
 var _front: int = 0
 var _tail: int = 0
@@ -73,7 +75,7 @@ func resize(new_size: int) -> void:
 func size() -> int:
 	return _size
 
-func empty() -> bool:
+func is_empty() -> bool:
 	return _size == 0
 
 func at(i: int) -> Variant:

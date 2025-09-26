@@ -3,17 +3,28 @@ extends Node
 ## Global audio manager. Handles concurrent audio and playback requests.
 ## Refers to GlobalManager for volume level data.
 
+## Audio entry type. Used to apply volume settings correctly.
+enum AudioEntryType {
+	MUSIC,
+	SFX
+}
+# --------------------------------------- DATA --------------------------------------------------- #
 ## Every unique audio file is listed here.
 enum AudioEntry {
 	TEST_THEME,
 	_AUDIO_ENTRY_COUNT,
 }
 
-## Audio entry type. Used to apply volume settings correctly.
-enum AudioEntryType {
-	MUSIC,
-	SFX
+## Links enum to file path.
+const _audio_file_paths = {
+	AudioEntry.TEST_THEME : "res://assets/music/beer_type_minus_dreamy.ogg"
 }
+
+## Links enum to entry type.
+const _audio_file_type = {
+	AudioEntry.TEST_THEME : AudioEntryType.MUSIC
+}
+# --------------------------------------- IMPL --------------------------------------------------- #
 
 ## Playback type. Whether it is looping, and fade type.
 enum AudioPlaybackType {
@@ -38,16 +49,6 @@ enum AudioFadeState {
 const no_fade: Array[AudioPlaybackType] = [
 	AudioPlaybackType.DEFAULT, AudioPlaybackType.LOOP
 ]
-
-## Links enum to file path.
-const _audio_file_paths = {
-	AudioEntry.TEST_THEME : "res://assets/music/beer_type_minus_dreamy.ogg"
-}
-
-## Links enum to entry type.
-const _audio_file_type = {
-	AudioEntry.TEST_THEME : AudioEntryType.MUSIC
-}
 
 # ---------------------------------------- PRIVATE ----------------------------------------------- #
 
@@ -100,19 +101,20 @@ func _process(delta: float) -> void:
 		set_vol *= GlobalManager.get_state(GlobalManager.StateType.MASTER_VOLUME)
 		match entry.fade_state:
 			AudioFadeState.FADING_IN: 
-				if entry.player.volume_linear >= set_vol:
+				var nvol: float = entry.player.volume_linear + entry.fade_ratio * delta
+				if nvol >= set_vol:
 					entry.player.volume_linear = set_vol
 					entry.fade_state = AudioFadeState.NONE
 					continue
-				entry.player.volume_linear += entry.fade_ratio * delta
+				entry.player.volume_linear = nvol
 			AudioFadeState.FADING_OUT: 
-				if entry.player.volume_linear <= 0.0:
+				var nvol: float = entry.player.volume_linear - entry.fade_ratio * delta
+				if nvol <= 0.0:
 					_clear_entry(i)
 					continue
-				entry.player.volume_linear -= entry.fade_ratio * delta
+				entry.player.volume_linear = nvol
 			AudioFadeState.NONE:
 				entry.player.volume_linear = set_vol
-				continue
 		if entry.playback_type in no_fade:
 			continue
 		var stream_length: float = entry.player.stream.get_length()
@@ -130,7 +132,7 @@ func play(entry: AudioEntry, playback_type = AudioPlaybackType.DEFAULT, fade_dur
 	if concurrent == CONCURRENT_LIMIT:
 		return
 	if not _audio_resources[entry]: _audio_resources[entry] = load(_audio_file_paths[entry])
-	
+
 	var i: int = 0
 	for ent in _active_entries:
 		if not ent: break

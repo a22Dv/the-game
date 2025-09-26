@@ -92,4 +92,4 @@ text = "Back to MainMenu"
 [connection signal="drag_ended" from="Control/Panel/HBoxContainer/VBoxContainer/Master" to="." method="_on_master_drag_ended"]
 [connection signal="drag_ended" from="Control/Panel/HBoxContainer/VBoxContainer/Music" to="." method="_on_music_drag_ended"]
 [connection signal="drag_ended" from="Control/Panel/HBoxContainer/VBoxContainer/Sfx" to="." method="_on_sfx_drag_ended"]
-[connection signal="button_down" from="Control/Panel/Back" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Control/Panel/Back" to="." method="_on_back_button_down"]

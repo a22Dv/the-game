@@ -18,4 +18,6 @@ func _ready() -> void:
 func _on_vol_drag_ended(value_changed: float, st: GlobalManager.StateType) -> void:
 	if value_changed:
 		GlobalManager.set_state(st, value_changed / NORM)
-		
+
+func _on_back_button_down() -> void:
+	GlobalManager.pop_scene()
