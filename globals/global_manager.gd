@@ -39,6 +39,7 @@ func push_scene(path: String) -> void:
 		return
 	var scene: Node = pkd_scene.instantiate()
 	if not _stack.is_empty():
+		AudioManager._pause_by_caller(get_index_of_active_scene())
 		_stack.top().process_mode = ProcessMode.PROCESS_MODE_DISABLED
 	_stack.push(scene)
 	get_tree().root.add_child(scene)
@@ -50,13 +51,11 @@ func pop_scene() -> void:
 	if _stack.size() <= 1:
 		push_warning("Error: Cannot pop the first scene on the stack.")
 		return
+	AudioManager._end_by_caller(get_index_of_active_scene())
 	var crnt_scene: Node = _stack.pop()
 	crnt_scene.queue_free()
+	AudioManager._play_by_caller(get_index_of_active_scene())
 	_stack.top().process_mode = ProcessMode.PROCESS_MODE_INHERIT
-
-## Gets the current active scene.
-func get_current_scene() -> Node:
-	return _stack.top()
 
 ## Swaps the current active scene.
 func swap_scene(path: String) -> void:
@@ -65,11 +64,16 @@ func swap_scene(path: String) -> void:
 		push_warning("Error: Path %s cannot be instantiated." % [path])
 		return
 	var scene: Node = pckd_scene.instantiate()
+	AudioManager._end_by_caller(get_index_of_active_scene())
 	var crnt_scene: Node = _stack.pop()
 	crnt_scene.queue_free()
 	_stack.push(scene)
 	get_tree().root.add_child(scene)
-	
+
+## Gets the current active scene.
+func get_current_scene() -> Node:
+	return _stack.top()
+
 ## Gets the value associated with the specified type.
 func get_state(type: StateType) -> Variant:
 	return _state[type]
@@ -77,7 +81,9 @@ func get_state(type: StateType) -> Variant:
 ## Sets the value associated with the specified type.
 func set_state(type: StateType, val: Variant) -> void:
 	_state[type] = val
-	
+
+func get_index_of_active_scene() -> int:
+	return _stack.size() - 1
 ## Quits the entire game.
 func quit() -> void:
 	get_tree().quit()

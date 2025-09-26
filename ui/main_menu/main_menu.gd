@@ -6,6 +6,13 @@ extends Node2D
 
 func _ready() -> void:
 	GlobalManager._register(self)
+	
+	# Call-deferred so that the tree is modified only
+	# after Godot's runtime has finished setting up.
+	AudioManager.play.call_deferred(
+		AudioManager.AudioEntry.WHOLESOME_FANTASY, 
+		AudioManager.AudioPlaybackType.FADE_IN_OUT_LOOP
+	)
 
 func _on_quit_button_down() -> void:
 	GlobalManager.quit()
