@@ -9,7 +9,7 @@ func _ready() -> void:
 	
 	# Call-deferred so that the tree is modified only
 	# after Godot's runtime has finished setting up.
-	AudioManager.play.call_deferred(
+	AudioManager.play(
 		AudioManager.AudioEntry.WHOLESOME_FANTASY, 
 		AudioManager.AudioPlaybackType.FADE_IN_OUT_LOOP
 	)

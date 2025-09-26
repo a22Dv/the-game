@@ -49,7 +49,7 @@ enum AudioFadeState {
 	FADING_OUT
 }
 
-## A list of entries that meet certain criteria.
+## A list of playback types that meet certain criteria.
 
 const _has_fade_out: Array[AudioPlaybackType] = [
 	AudioPlaybackType.FADE_OUT, AudioPlaybackType.FADE_IN_OUT,
@@ -175,11 +175,9 @@ func _process(delta: float) -> void:
 		if start_fade_out and entry.playback_type < AudioPlaybackType.LOOP: 
 			# Only non-looping fade types.
 			entry.fade_state = AudioFadeState.FADING_OUT
-		
-# ---------------------------------------- PUBLIC ----------------------------------------------- #
 
 ## Plays an instance of the audio `entry` that was specified.
-func play(
+func _play_entry(
 	entry: AudioEntry, 
 	playback_type = AudioPlaybackType.DEFAULT, 
 	playback_depends_on_caller_state = true, 
@@ -219,6 +217,24 @@ func play(
 	active_entry.player.play()
 	_active_entries[i] = active_entry
 	concurrent += 1
+		
+# ---------------------------------------- PUBLIC ----------------------------------------------- #
+
+## Wrapper over _play_entry(). Always defers the call.
+func play(
+	entry: AudioEntry, 
+	playback_type = AudioPlaybackType.DEFAULT, 
+	playback_depends_on_caller_state = true, 
+	fade_depends_on_caller_state = true,
+	fade_duration = 1.0
+) -> void:
+	AudioManager._play_entry.call_deferred(
+		entry,
+		playback_type,
+		playback_depends_on_caller_state,
+		fade_depends_on_caller_state,
+		fade_duration
+	)
 	
 ## Stops one playing instance of audio of type `entry`.
 func stop_one(entry: AudioEntry, immediate = false) -> void:
