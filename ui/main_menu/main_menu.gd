@@ -29,11 +29,11 @@ func _ready() -> void:
 # Currently, new game and continue redirects to a new instance.
 # saving logic required for on_continue() to be functional.
 func on_newgame() -> void:
-	GlobalManager.push_scene("res://game/game.tscn")
+	GlobalManager.push_scene("res://game/select_difficulty/select_difficulty.tscn")
 func on_continue() -> void:
 	GlobalManager.push_scene("res://game/game.tscn")
 func on_settings() -> void:
-	GlobalManager.push_scene("res://ui/settings.tscn")
+	GlobalManager.push_scene("res://ui/settings/settings.tscn")
 func on_quit() -> void:
 	GlobalManager.quit()
 	

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://0vvtdhoj2rfv" path="res://ui/main_menu/main_menu.gd" id="1_uhj5c"]
 [ext_resource type="StyleBox" uid="uid://2o0fbcen3ov1" path="res://ui/main_menu/flat_panel_style.tres" id="2_i5wg5"]
-[ext_resource type="FontFile" uid="uid://dhy3vg0mk7frw" path="res://assets/fonts/Sweet Toffee.ttf" id="2_mu8pm"]
+[ext_resource type="PackedScene" uid="uid://dlifu1dy3fmmo" path="res://ui/generic_text/generic_text.tscn" id="3_i5wg5"]
 [ext_resource type="PackedScene" uid="uid://dsuqru0ekvk0c" path="res://ui/generic_button/generic_button.tscn" id="3_omy8q"]
 
 [node name="MainMenu" type="Node2D"]
@@ -32,10 +32,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel/HBoxContainer"]
+[node name="Title" parent="Control/Panel/HBoxContainer" instance=ExtResource("3_i5wg5")]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/normal_font = ExtResource("2_mu8pm")
 theme_override_font_sizes/normal_font_size = 128
 text = "Kaya Pa!"
 horizontal_alignment = 1
