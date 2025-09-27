@@ -1,57 +1,67 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3f4c6um8ieiu"]
+[gd_scene load_steps=5 format=3 uid="uid://c3f4c6um8ieiu"]
 
 [ext_resource type="Script" uid="uid://0vvtdhoj2rfv" path="res://ui/main_menu/main_menu.gd" id="1_uhj5c"]
+[ext_resource type="FontFile" uid="uid://dhy3vg0mk7frw" path="res://assets/fonts/Sweet Toffee.ttf" id="2_mu8pm"]
+[ext_resource type="PackedScene" uid="uid://dsuqru0ekvk0c" path="res://ui/generic_button/generic_button.tscn" id="3_omy8q"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhj5c"]
-bg_color = Color(0.3019608, 0.3019608, 0.3019608, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mu8pm"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_uhj5c")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
 offset_right = 1280.0
-offset_bottom = 720.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_uhj5c")
+offset_bottom = 721.0
 
-[node name="Placeholder" type="HBoxContainer" parent="."]
-offset_right = 1280.0
-offset_bottom = 720.0
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mu8pm")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Placeholder"]
-clip_contents = false
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/normal_font_size = 64
-text = "Game Title"
-scroll_active = false
+theme_override_fonts/normal_font = ExtResource("2_mu8pm")
+theme_override_font_sizes/normal_font_size = 128
+text = "Kaya Pa!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Placeholder"]
-custom_minimum_size = Vector2(200, 200)
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
-size_flags_stretch_ratio = 0.88
-alignment = 1
 
-[node name="Start" type="Button" parent="Placeholder/VBoxContainer"]
+[node name="NewGame" parent="Control/Panel/HBoxContainer/VBoxContainer" instance=ExtResource("3_omy8q")]
 layout_mode = 2
-size_flags_vertical = 3
-text = "Start"
+text = "New Game"
 
-[node name="Quit" type="Button" parent="Placeholder/VBoxContainer"]
+[node name="Continue" parent="Control/Panel/HBoxContainer/VBoxContainer" instance=ExtResource("3_omy8q")]
 layout_mode = 2
-size_flags_vertical = 3
+text = "Continue"
+
+[node name="Settings" parent="Control/Panel/HBoxContainer/VBoxContainer" instance=ExtResource("3_omy8q")]
+layout_mode = 2
+text = "Settings"
+
+[node name="Quit" parent="Control/Panel/HBoxContainer/VBoxContainer" instance=ExtResource("3_omy8q")]
+layout_mode = 2
 text = "Quit
 "
-
-[node name="Settings" type="Button" parent="Placeholder/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Settings
-"
-
-[connection signal="button_down" from="Placeholder/VBoxContainer/Start" to="." method="_on_start_button_down"]
-[connection signal="button_down" from="Placeholder/VBoxContainer/Quit" to="." method="_on_quit_button_down"]
-[connection signal="button_down" from="Placeholder/VBoxContainer/Settings" to="." method="_on_settings_button_down"]
