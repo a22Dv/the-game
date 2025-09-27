@@ -169,3 +169,4 @@ layer_0/tile_data = PackedInt32Array(65533, 458752, 0, 65534, 458752, 0, 65535, 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(146, -40)
 shape = SubResource("RectangleShape2D_jfd41")
+disabled = true
