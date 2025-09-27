@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dhcprtsbv1pew"]
 
 [ext_resource type="Texture2D" uid="uid://brirn1mr774qk" path="res://assets/Platformer/character/knight.png" id="1_c8b2b"]
-[ext_resource type="Script" path="res://assets/Platformer/character/player_hub.gd" id="2_p7fn3"]
+[ext_resource type="Script" uid="uid://c1u7och14pa4m" path="res://assets/Platformer/character/player_hub.gd" id="2_p7fn3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p7fn3"]
 atlas = ExtResource("1_c8b2b")
@@ -44,6 +44,7 @@ radius = 6.0
 height = 16.0
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("2_p7fn3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -56,4 +57,3 @@ frame_progress = 0.506651
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6, -11)
 shape = SubResource("CapsuleShape2D_c8b2b")
-script = ExtResource("2_p7fn3")

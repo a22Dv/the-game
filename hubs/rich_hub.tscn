@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://cqikcpeakmqjm"]
+
+[ext_resource type="PackedScene" uid="uid://dhcprtsbv1pew" path="res://assets/Platformer/character/player_hub.tscn" id="1_82t6i"]
+[ext_resource type="Texture2D" uid="uid://br18ru2s3n3b5" path="res://assets/Platformer/Platform/bakcgroundtest.png" id="2_2guqq"]
+[ext_resource type="Texture2D" uid="uid://byuqiheglq03t" path="res://assets/Platformer/Platform/OzLSPB.png" id="3_23dh2"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2guqq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23dh2"]
+size = Vector2(500, 31.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2guqq"]
+size = Vector2(87, 32)
+
+[node name="RichHub" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [-101.0]
+
+[node name="Player" parent="." instance=ExtResource("1_82t6i")]
+scale = Vector2(1.5, 1.5)
+motion_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+scale = Vector2(1.3333334, 1.3333334)
+zoom = Vector2(3, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visibility_layer = 2
+z_index = -1
+z_as_relative = false
+position = Vector2(-11, 74)
+scale = Vector2(0.52916664, 0.6472222)
+texture = ExtResource("2_2guqq")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-951, 41)
+texture = ExtResource("3_23dh2")
+
+[node name="Fence" type="StaticBody2D" parent="."]
+position = Vector2(-81, 135)
+physics_material_override = SubResource("PhysicsMaterial_2guqq")
+
+[node name="fence" type="CollisionShape2D" parent="Fence"]
+position = Vector2(66, -1.375)
+shape = SubResource("RectangleShape2D_23dh2")
+
+[node name="House" type="StaticBody2D" parent="."]
+position = Vector2(105, -8)
+
+[node name="House" type="CollisionShape2D" parent="House"]
+position = Vector2(-2.5, -7)
+shape = SubResource("RectangleShape2D_2guqq")
