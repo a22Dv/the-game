@@ -5,7 +5,7 @@ func _on_button_button_down() -> void:
 
 func _ready() -> void:
 	AudioManager.play(
-		AudioManager.AudioEntry.MINUS_DREAMY, 
+		AudioManager.AudioEntry.WHOLESOME_FANTASY, 
 		AudioManager.AudioPlaybackType.FADE_IN_OUT_LOOP,
 		false,
 		false,
