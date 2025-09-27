@@ -133,8 +133,7 @@ func _process(delta: float) -> void:
 	var i: int = -1
 	for entry in _active_entries:
 		i += 1
-		if not entry:
-			continue
+		if not entry: continue
 		var set_vol: float =  0.0
 		match entry.entry_type:
 			AudioEntryType.MUSIC: set_vol = GlobalManager.get_state(
@@ -148,24 +147,24 @@ func _process(delta: float) -> void:
 			AudioFadeState.FADING_IN: 
 				var nvol: float = entry.player.volume_linear + entry.fade_ratio * delta
 				if nvol >= set_vol:
-					entry.player.volume_linear = set_vol
+					entry.player.volume_db = linear_to_db(set_vol)
 					entry.fade_state = AudioFadeState.NONE
 					continue
-				entry.player.volume_linear = nvol
+				entry.player.volume_db = linear_to_db(nvol)
 			AudioFadeState.FADING_OUT: 
 				var nvol: float = entry.player.volume_linear - entry.fade_ratio * delta
 				if nvol <= 0.0 and not entry.paused:
 					_clear_entry(i)
 					continue
 				elif nvol <= 0.0:
-					entry.player.volume_linear = 0.0
+					entry.player.volume_db = linear_to_db(0.0)
 					entry.fade_state = AudioFadeState.NONE
 					continue
-				entry.player.volume_linear = nvol
+				entry.player.volume_db = linear_to_db(nvol)
 			AudioFadeState.NONE:
 				if entry.paused:
 					continue
-				entry.player.volume_linear = set_vol
+				entry.player.volume_db = linear_to_db(set_vol)
 		if entry.playback_type not in _has_fade_out:
 			continue
 		var stream_length: float = entry.player.stream.get_length()

@@ -84,6 +84,7 @@ func set_state(type: StateType, val: Variant) -> void:
 
 func get_index_of_active_scene() -> int:
 	return _stack.size() - 1
+	
 ## Quits the entire game.
 func quit() -> void:
 	get_tree().quit()

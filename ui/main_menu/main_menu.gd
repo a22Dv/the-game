@@ -11,7 +11,10 @@ func _ready() -> void:
 	# after Godot's runtime has finished setting up.
 	AudioManager.play(
 		AudioManager.AudioEntry.WHOLESOME_FANTASY, 
-		AudioManager.AudioPlaybackType.FADE_IN_OUT_LOOP
+		AudioManager.AudioPlaybackType.FADE_IN_OUT_LOOP,
+		false,
+		false,
+		3.0
 	)
 
 func _on_quit_button_down() -> void:
