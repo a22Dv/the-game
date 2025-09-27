@@ -1,14 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqikcpeakmqjm"]
+[gd_scene load_steps=2 format=3 uid="uid://cqikcpeakmqjm"]
 
 [ext_resource type="PackedScene" uid="uid://dhcprtsbv1pew" path="res://assets/Platformer/character/player_hub.tscn" id="1_82t6i"]
-[ext_resource type="Script" path="res://assets/Platformer/character/player_hub.gd" id="2_2guqq"]
 
 [node name="RichHub" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_82t6i")]
 position = Vector2(-5, -9)
 motion_mode = 1
-script = ExtResource("2_2guqq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
