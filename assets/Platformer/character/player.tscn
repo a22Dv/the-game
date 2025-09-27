@@ -35,7 +35,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c8b2b"]
@@ -49,9 +49,10 @@ texture_filter = 1
 position = Vector2(6, -14)
 sprite_frames = SubResource("SpriteFrames_whs7s")
 autoplay = "default"
-frame = 3
-frame_progress = 0.506651
+frame_progress = 0.9388555
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6, -11)
 shape = SubResource("CapsuleShape2D_c8b2b")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
