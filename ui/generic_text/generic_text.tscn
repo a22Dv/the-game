@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlifu1dy3fmmo"]
+
+[ext_resource type="FontFile" uid="uid://dhy3vg0mk7frw" path="res://assets/fonts/Sweet Toffee.ttf" id="1_5iwqg"]
+
+[node name="GenericText" type="RichTextLabel"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_fonts/normal_font = ExtResource("1_5iwqg")
+theme_override_font_sizes/normal_font_size = 32
+text = "Text"
