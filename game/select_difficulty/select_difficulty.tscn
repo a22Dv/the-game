@@ -105,11 +105,11 @@ offset_right = 1256.0
 offset_bottom = 691.0
 text = ">> Main Menu"
 
-[node name="rich" parent="Control/Panel" instance=ExtResource("3_86u5p")]
+[node name="Rich" parent="Control/Panel" instance=ExtResource("3_86u5p")]
 layout_mode = 0
-offset_left = 137.0
-offset_top = 281.0
-offset_right = 294.0
-offset_bottom = 391.0
+offset_left = 177.0
+offset_top = 297.0
+offset_right = 334.0
+offset_bottom = 407.0
 text = "play (test)
 "

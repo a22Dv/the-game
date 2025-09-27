@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://cqikcpeakmqjm"]
 
-[ext_resource type="PackedScene" uid="uid://dhcprtsbv1pew" path="res://assets/Platformer/character/player_hub.tscn" id="1_82t6i"]
-[ext_resource type="Texture2D" uid="uid://br18ru2s3n3b5" path="res://assets/Platformer/Platform/bakcgroundtest.png" id="2_2guqq"]
-[ext_resource type="Texture2D" uid="uid://byuqiheglq03t" path="res://assets/Platformer/Platform/OzLSPB.png" id="3_23dh2"]
+[ext_resource type="PackedScene" uid="uid://dhcprtsbv1pew" path="res://assets/Platformer/character/player_hub.tscn" id="1_hx757"]
+[ext_resource type="Texture2D" uid="uid://br18ru2s3n3b5" path="res://miscellaneous/assets/Platformer/Platform/bakcgroundtest.png" id="2_tsglo"]
+[ext_resource type="Texture2D" uid="uid://byuqiheglq03t" path="res://miscellaneous/assets/Platformer/Platform/OzLSPB.png" id="3_2dmil"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2guqq"]
 
@@ -15,7 +15,7 @@ size = Vector2(87, 32)
 [node name="RichHub" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-101.0]
 
-[node name="Player" parent="." instance=ExtResource("1_82t6i")]
+[node name="Player" parent="." instance=ExtResource("1_hx757")]
 scale = Vector2(1.5, 1.5)
 motion_mode = 1
 
@@ -29,12 +29,12 @@ z_index = -1
 z_as_relative = false
 position = Vector2(-11, 74)
 scale = Vector2(0.52916664, 0.6472222)
-texture = ExtResource("2_2guqq")
+texture = ExtResource("2_tsglo")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(-951, 41)
-texture = ExtResource("3_23dh2")
+texture = ExtResource("3_2dmil")
 
 [node name="Fence" type="StaticBody2D" parent="."]
 position = Vector2(-81, 135)
