@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brirn1mr774qk"
-path="res://.godot/imported/knight.png-add093a30e303f865a254b16dfd0550b.ctex"
+uid="uid://bpkpkt7gpew3t"
+path="res://.godot/imported/platforms.png-1cb4e38e8f7fffd26c2b5d38c29e5327.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Platformer/character/knight.png"
-dest_files=["res://.godot/imported/knight.png-add093a30e303f865a254b16dfd0550b.ctex"]
+source_file="res://miscellaneous/assets/Platformer/Platform/platforms.png"
+dest_files=["res://.godot/imported/platforms.png-1cb4e38e8f7fffd26c2b5d38c29e5327.ctex"]
 
 [params]
 
