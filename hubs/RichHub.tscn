@@ -49,3 +49,4 @@ position = Vector2(-192, 79)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 scale = Vector2(1.3333334, 1.3333334)
 zoom = Vector2(3, 3)
+

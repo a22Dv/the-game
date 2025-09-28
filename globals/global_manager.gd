@@ -26,7 +26,8 @@ func _ready() -> void:
 # Specifically for dependency inversion as autoloading
 # loads GlobalManager before MainMenu. So we need
 # MainMenu to "report" its existence to GlobalManager.
-func _register(node: Node) -> void:
+## DO NOT USE. Only for registering the main menu.
+func _register_main_menu(node: Node) -> void:
 	_stack.push(node)
 	
 # ---------- PUBLIC ---------- #

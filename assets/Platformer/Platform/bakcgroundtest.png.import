@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b021as4v0mfhj"
-path="res://.godot/imported/bakcgroundtest.png-4753c80b789357b0dd6b9ac3375077a1.ctex"
+uid="uid://br18ru2s3n3b5"
+path="res://.godot/imported/bakcgroundtest.png-54e8cc28cb70aeb8767db2e2d0f02fe7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://miscellaneous/assets/Platformer/Platform/bakcgroundtest.png"
-dest_files=["res://.godot/imported/bakcgroundtest.png-4753c80b789357b0dd6b9ac3375077a1.ctex"]
+source_file="res://assets/Platformer/Platform/bakcgroundtest.png"
+dest_files=["res://.godot/imported/bakcgroundtest.png-54e8cc28cb70aeb8767db2e2d0f02fe7.ctex"]
 
 [params]
 

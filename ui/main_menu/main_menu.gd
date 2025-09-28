@@ -11,7 +11,7 @@ func _ready() -> void:
 	# This is a one-time requirement due to the fact that 
 	# the main menu is the first scene, which is loaded by Godot and not
 	# by the manager.
-	GlobalManager._register(self)
+	GlobalManager._register_main_menu(self)
 	
 	var callables: Array[Callable] = [on_newgame, on_continue, on_settings, on_quit]
 	var i: int = 0
