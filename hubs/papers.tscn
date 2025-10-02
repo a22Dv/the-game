@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=3 uid="uid://cg6027eni8ful"]
+
+[ext_resource type="Script" uid="uid://pmyi3f5tggb4" path="res://hubs/papers.gd" id="1_o71ty"]
+[ext_resource type="Texture2D" uid="uid://hdyi5ihjq0ph" path="res://assets/papers/bg.png" id="2_ykudq"]
+[ext_resource type="Texture2D" uid="uid://c247aec3hmi1p" path="res://assets/papers/text.png" id="3_17lw1"]
+[ext_resource type="Texture2D" uid="uid://43ldu2c3654g" path="res://assets/papers/clip.png" id="4_17lw1"]
+[ext_resource type="Texture2D" uid="uid://dp0tncbmob3j7" path="res://assets/papers/Page 1/Page Base.png" id="5_cmpxf"]
+[ext_resource type="Texture2D" uid="uid://8tpau5n21l4b" path="res://assets/papers/Page 1/Writers guild.png" id="6_ibx8i"]
+[ext_resource type="Texture2D" uid="uid://dk1we73ooa8hu" path="res://assets/papers/Page 1/Activity Fair.png" id="7_tve30"]
+[ext_resource type="Texture2D" uid="uid://dhn0qsf8ll3wo" path="res://assets/papers/Page 1/Act 1.png" id="8_3r035"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jp0py"]
+load_path = "res://.godot/imported/Act 2.png-3132a2c18b7390c78826319f71001570.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_76ap6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jp0py"]
+size = Vector2(173.5, 92)
+
+[node name="Papers" type="Node2D"]
+script = ExtResource("1_o71ty")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(645, 360.50003)
+scale = Vector2(1.1371528, 1.040278)
+texture = ExtResource("2_ykudq")
+
+[node name="Paper" type="Sprite2D" parent="."]
+position = Vector2(362, 358)
+scale = Vector2(0.97239584, 1.1263889)
+texture = ExtResource("3_17lw1")
+
+[node name="clip" type="Sprite2D" parent="."]
+position = Vector2(941, 365)
+texture = ExtResource("4_17lw1")
+
+[node name="Page1" type="Node2D" parent="clip"]
+
+[node name="Base Text" type="Sprite2D" parent="clip/Page1"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("5_cmpxf")
+offset = Vector2(16.145, 0)
+
+[node name="OrgTruth" type="Sprite2D" parent="clip/Page1"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("6_ibx8i")
+offset = Vector2(16.145, 0)
+
+[node name="TitleTruth" type="Sprite2D" parent="clip/Page1"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_tve30")
+offset = Vector2(16.145, 0)
+
+[node name="Act1" type="Sprite2D" parent="clip/Page1"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("8_3r035")
+offset = Vector2(16.145, 0)
+
+[node name="Act2" type="Sprite2D" parent="clip/Page1"]
+scale = Vector2(0.9, 0.9)
+texture = SubResource("CompressedTexture2D_jp0py")
+offset = Vector2(16.145, 0)
+
+[node name="Act3" type="Sprite2D" parent="clip/Page1"]
+scale = Vector2(0.9, 0.9)
+texture = SubResource("CompressedTexture2D_76ap6")
+offset = Vector2(16.145, 0)
+
+[node name="Turnleft" type="Area2D" parent="clip"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="clip/Turnleft"]
+position = Vector2(-90.75, 204)
+shape = SubResource("RectangleShape2D_jp0py")
+
+[node name="Turnright" type="Area2D" parent="clip"]
+position = Vector2(-140, 224)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="clip/Turnright"]
+position = Vector2(232, -21)
+shape = SubResource("RectangleShape2D_jp0py")
+
+[connection signal="mouse_entered" from="clip/Turnleft" to="." method="_on_turnleft_mouse_entered"]
+[connection signal="mouse_exited" from="clip/Turnleft" to="." method="_on_turnleft_mouse_exited"]
+[connection signal="mouse_entered" from="clip/Turnright" to="." method="_on_turnright_mouse_entered"]
+[connection signal="mouse_exited" from="clip/Turnright" to="." method="_on_turnright_mouse_exited"]
