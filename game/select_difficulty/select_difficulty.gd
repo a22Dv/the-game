@@ -5,8 +5,6 @@ extends Node2D
 
 
 func _ready() -> void:
-	GlobalManager._register(self)
-	
 	var callables: Array[Callable] = [on_rich]
 	var i: int = 0
 	for btn in [rich_btn]:
