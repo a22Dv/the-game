@@ -359,9 +359,9 @@ func stamp_paper(stamp_texture: Texture2D, page: Node2D):
 
 func move_page(page: Node2D):
 	var tween = create_tween()
-	var target_pos = page.position + Vector2(0, -600)
+	var target_pos = page.position + Vector2(0, -700)
 
-	tween.tween_property(page, "position", target_pos, 0.6).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(page, "position", target_pos, 1.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 
 	tween.tween_callback(func ():
 		stamp_ref.texture = null
