@@ -1,13 +1,38 @@
-[gd_scene load_steps=12 format=3 uid="uid://cg6027eni8ful"]
+[gd_scene load_steps=37 format=3 uid="uid://cg6027eni8ful"]
 
 [ext_resource type="Script" uid="uid://pmyi3f5tggb4" path="res://hubs/papers.gd" id="1_o71ty"]
 [ext_resource type="Texture2D" uid="uid://hdyi5ihjq0ph" path="res://assets/papers/bg.png" id="2_ykudq"]
 [ext_resource type="Texture2D" uid="uid://c247aec3hmi1p" path="res://assets/papers/text.png" id="3_17lw1"]
 [ext_resource type="Texture2D" uid="uid://43ldu2c3654g" path="res://assets/papers/clip.png" id="4_17lw1"]
-[ext_resource type="Texture2D" uid="uid://dp0tncbmob3j7" path="res://assets/papers/Page 1/Page Base.png" id="5_cmpxf"]
-[ext_resource type="Texture2D" uid="uid://8tpau5n21l4b" path="res://assets/papers/Page 1/Writers guild.png" id="6_ibx8i"]
-[ext_resource type="Texture2D" uid="uid://dk1we73ooa8hu" path="res://assets/papers/Page 1/Activity Fair.png" id="7_tve30"]
-[ext_resource type="Texture2D" uid="uid://dhn0qsf8ll3wo" path="res://assets/papers/Page 1/Act 1.png" id="8_3r035"]
+[ext_resource type="Texture2D" uid="uid://dbw1oyb85152r" path="res://assets/papers/Paper/Page3/Paper3 BT.png" id="4_avhlc"]
+[ext_resource type="Texture2D" uid="uid://wkr8ofeeat33" path="res://assets/papers/Paper/Page2/Paper2 BT.png" id="4_kobwa"]
+[ext_resource type="Texture2D" uid="uid://ck36ig3gv3vvh" path="res://assets/papers/Paper/Page1/Paper1 BT.png" id="4_pndnb"]
+[ext_resource type="Texture2D" uid="uid://dfdqqqh5htuuh" path="res://assets/papers/Paper/Page2/Paper p2 title1.png" id="5_3l4hd"]
+[ext_resource type="Texture2D" uid="uid://dp0tncbmob3j7" path="res://assets/papers/clipboard/Page 1/Page Base.png" id="5_cmpxf"]
+[ext_resource type="Texture2D" uid="uid://6x8x8lxe3ytk" path="res://assets/papers/Paper/Page3/Prev Date1.png" id="5_enw3y"]
+[ext_resource type="Texture2D" uid="uid://hejyh68j8rwi" path="res://assets/papers/Paper/Page1/Paper Org1.png" id="5_fyso5"]
+[ext_resource type="Texture2D" uid="uid://dqoeq5l3gorf3" path="res://assets/papers/Paper/Page2/Paper act1.png" id="6_3apx4"]
+[ext_resource type="Texture2D" uid="uid://8tpau5n21l4b" path="res://assets/papers/clipboard/Page 1/Writers guild.png" id="6_ibx8i"]
+[ext_resource type="Texture2D" uid="uid://cio0f6qo56fh5" path="res://assets/papers/Paper/Page1/Paper Title1.png" id="6_kobwa"]
+[ext_resource type="Texture2D" uid="uid://brcwwothyocp2" path="res://assets/papers/Paper/Page3/Another title1.png" id="6_mcov2"]
+[ext_resource type="Texture2D" uid="uid://ihfcrn31p8mx" path="res://assets/papers/Paper/Page3/More Act1.png" id="7_ik3sn"]
+[ext_resource type="Texture2D" uid="uid://e20o1fq41mg0" path="res://assets/papers/Paper/Page2/Paper 2act1.png" id="7_k128s"]
+[ext_resource type="Texture2D" uid="uid://dk1we73ooa8hu" path="res://assets/papers/clipboard/Page 1/Activity Fair.png" id="7_tve30"]
+[ext_resource type="Texture2D" uid="uid://dhn0qsf8ll3wo" path="res://assets/papers/clipboard/Page 1/Act 1.png" id="8_3r035"]
+[ext_resource type="Texture2D" uid="uid://dq7wcidmepxfj" path="res://assets/papers/Paper/Page2/Paper d1.png" id="8_g0rb7"]
+[ext_resource type="Texture2D" uid="uid://ddhr2c5mubtdu" path="res://assets/papers/Paper/Page3/More 2Act1.png" id="8_sxv3y"]
+[ext_resource type="Texture2D" uid="uid://cnehvo2olyjun" path="res://assets/papers/Paper/Page3/FakeBudget1.png" id="9_nynmx"]
+[ext_resource type="Texture2D" uid="uid://1hwopm5hwbp5" path="res://assets/papers/clipboard/Page 2/Base Text2.png" id="9_tve30"]
+[ext_resource type="Texture2D" uid="uid://dkj7nwtjgkrrh" path="res://assets/papers/Paper/Page2/Paper Time1.png" id="9_u6xs6"]
+[ext_resource type="Texture2D" uid="uid://c834nthn1yho2" path="res://assets/papers/clipboard/Page 2/Trinbday.png" id="10_3r035"]
+[ext_resource type="Texture2D" uid="uid://go6q8qg3rdqu" path="res://assets/papers/clipboard/Page 2/time1.png" id="11_kvnxy"]
+[ext_resource type="Texture2D" uid="uid://csup2t2nwdcyk" path="res://assets/papers/clipboard/Page 2/budget1.png" id="12_raqo1"]
+[ext_resource type="Texture2D" uid="uid://utsbatmib1js" path="res://assets/papers/clipboard/Page 3/third page.png" id="13_3r035"]
+[ext_resource type="Texture2D" uid="uid://baf27l26l48ce" path="res://assets/papers/red stamp.png" id="14_raqo1"]
+[ext_resource type="Texture2D" uid="uid://40ive6iqqfg3" path="res://assets/papers/green stamp.png" id="15_xlwpm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pndnb"]
+size = Vector2(407.24152, 359.5561)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jp0py"]
 load_path = "res://.godot/imported/Act 2.png-3132a2c18b7390c78826319f71001570.ctex"
@@ -17,6 +42,12 @@ load_path = "res://.godot/imported/Act 2.png-3132a2c18b7390c78826319f71001570.ct
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jp0py"]
 size = Vector2(173.5, 92)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fyso5"]
+size = Vector2(236, 298)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kobwa"]
+size = Vector2(200, 286)
+
 [node name="Papers" type="Node2D"]
 script = ExtResource("1_o71ty")
 
@@ -25,10 +56,110 @@ position = Vector2(645, 360.50003)
 scale = Vector2(1.1371528, 1.040278)
 texture = ExtResource("2_ykudq")
 
-[node name="Paper" type="Sprite2D" parent="."]
+[node name="Paper" type="Node2D" parent="."]
 position = Vector2(362, 358)
 scale = Vector2(0.97239584, 1.1263889)
+
+[node name="Page3" type="Node2D" parent="Paper"]
+
+[node name="Paper2" type="Sprite2D" parent="Paper/Page3"]
 texture = ExtResource("3_17lw1")
+
+[node name="BaseText3" type="Sprite2D" parent="Paper/Page3"]
+scale = Vector2(0.925, 0.92499995)
+texture = ExtResource("4_avhlc")
+offset = Vector2(-10.31, 0)
+
+[node name="PrevDate" type="Sprite2D" parent="Paper/Page3"]
+scale = Vector2(0.925, 0.92499995)
+texture = ExtResource("5_enw3y")
+offset = Vector2(-10.31, 0)
+
+[node name="NotherTitle" type="Sprite2D" parent="Paper/Page3"]
+scale = Vector2(0.925, 0.92499995)
+texture = ExtResource("6_mcov2")
+offset = Vector2(-10.31, 0)
+
+[node name="Act1" type="Sprite2D" parent="Paper/Page3"]
+scale = Vector2(0.925, 0.92499995)
+texture = ExtResource("7_ik3sn")
+offset = Vector2(-10.31, 0)
+
+[node name="Act2" type="Sprite2D" parent="Paper/Page3"]
+scale = Vector2(0.925, 0.92499995)
+texture = ExtResource("8_sxv3y")
+offset = Vector2(-10.31, 0)
+
+[node name="Budget" type="Sprite2D" parent="Paper/Page3"]
+scale = Vector2(0.925, 0.92499995)
+texture = ExtResource("9_nynmx")
+offset = Vector2(-10.31, 0)
+
+[node name="Page2" type="Node2D" parent="Paper"]
+
+[node name="Paper2" type="Sprite2D" parent="Paper/Page2"]
+texture = ExtResource("3_17lw1")
+
+[node name="BaseText2" type="Sprite2D" parent="Paper/Page2"]
+scale = Vector2(0.925, 0.92499995)
+texture = ExtResource("4_kobwa")
+offset = Vector2(-10.31, 0)
+
+[node name="Titlesfake" type="Sprite2D" parent="Paper/Page2"]
+scale = Vector2(0.925, 0.92499995)
+texture = ExtResource("5_3l4hd")
+offset = Vector2(-10.31, 0)
+
+[node name="actfake" type="Sprite2D" parent="Paper/Page2"]
+scale = Vector2(0.925, 0.92499995)
+texture = ExtResource("6_3apx4")
+offset = Vector2(-10.31, 0)
+
+[node name="act2fake" type="Sprite2D" parent="Paper/Page2"]
+scale = Vector2(0.925, 0.92499995)
+texture = ExtResource("7_k128s")
+offset = Vector2(-10.31, 0)
+
+[node name="Date" type="Sprite2D" parent="Paper/Page2"]
+scale = Vector2(0.925, 0.92499995)
+texture = ExtResource("8_g0rb7")
+offset = Vector2(-10.31, 0)
+
+[node name="Time" type="Sprite2D" parent="Paper/Page2"]
+scale = Vector2(0.925, 0.92499995)
+texture = ExtResource("9_u6xs6")
+offset = Vector2(-10.31, 0)
+
+[node name="Page1" type="Node2D" parent="Paper"]
+
+[node name="Paper2" type="Sprite2D" parent="Paper/Page1"]
+texture = ExtResource("3_17lw1")
+
+[node name="BaseText1" type="Sprite2D" parent="Paper/Page1"]
+scale = Vector2(0.925, 0.925)
+texture = ExtResource("4_pndnb")
+offset = Vector2(-10.31, 0)
+
+[node name="OrgFake" type="Sprite2D" parent="Paper/Page1"]
+scale = Vector2(0.925, 0.925)
+texture = ExtResource("5_fyso5")
+offset = Vector2(-10.31, 0)
+
+[node name="TitleFake" type="Sprite2D" parent="Paper/Page1"]
+scale = Vector2(0.925, 0.925)
+texture = ExtResource("6_kobwa")
+offset = Vector2(-10.31, 0)
+
+[node name="StampMark" type="Sprite2D" parent="Paper"]
+position = Vector2(13.369049, 158.91492)
+scale = Vector2(0.325, 0.325)
+offset = Vector2(0, 48.41)
+
+[node name="StampZone" type="Area2D" parent="Paper"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paper/StampZone"]
+position = Vector2(2.0568848, 83.89642)
+shape = SubResource("RectangleShape2D_pndnb")
 
 [node name="clip" type="Sprite2D" parent="."]
 position = Vector2(941, 365)
@@ -66,6 +197,35 @@ scale = Vector2(0.9, 0.9)
 texture = SubResource("CompressedTexture2D_76ap6")
 offset = Vector2(16.145, 0)
 
+[node name="Page2" type="Node2D" parent="clip"]
+
+[node name="Base Text2" type="Sprite2D" parent="clip/Page2"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("9_tve30")
+offset = Vector2(7.815, 0)
+
+[node name="Date" type="Sprite2D" parent="clip/Page2"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("10_3r035")
+offset = Vector2(7.815, 0)
+
+[node name="Time" type="Sprite2D" parent="clip/Page2"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("11_kvnxy")
+offset = Vector2(7.815, 0)
+
+[node name="Budget" type="Sprite2D" parent="clip/Page2"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("12_raqo1")
+offset = Vector2(7.815, 0)
+
+[node name="Page3" type="Node2D" parent="clip"]
+
+[node name="Base Text3" type="Sprite2D" parent="clip/Page3"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("13_3r035")
+offset = Vector2(9.89, 0)
+
 [node name="Turnleft" type="Area2D" parent="clip"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="clip/Turnleft"]
@@ -79,7 +239,30 @@ position = Vector2(-140, 224)
 position = Vector2(232, -21)
 shape = SubResource("RectangleShape2D_jp0py")
 
+[node name="RedStamp" type="Sprite2D" parent="."]
+position = Vector2(655, 198)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_raqo1")
+
+[node name="Area2D" type="Area2D" parent="RedStamp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RedStamp/Area2D"]
+position = Vector2(10, 1)
+shape = SubResource("RectangleShape2D_fyso5")
+
+[node name="GreenStamp" type="Sprite2D" parent="."]
+position = Vector2(655, 464)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_xlwpm")
+
+[node name="Area2D" type="Area2D" parent="GreenStamp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GreenStamp/Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_kobwa")
+
 [connection signal="mouse_entered" from="clip/Turnleft" to="." method="_on_turnleft_mouse_entered"]
 [connection signal="mouse_exited" from="clip/Turnleft" to="." method="_on_turnleft_mouse_exited"]
 [connection signal="mouse_entered" from="clip/Turnright" to="." method="_on_turnright_mouse_entered"]
 [connection signal="mouse_exited" from="clip/Turnright" to="." method="_on_turnright_mouse_exited"]
+[connection signal="input_event" from="RedStamp/Area2D" to="." method="_on_area_2d_input_event"]
