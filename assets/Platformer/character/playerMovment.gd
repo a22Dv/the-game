@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @export var speed: float = 200.0
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var input_vector = Vector2.ZERO
 
 	#input (just used the default arrow keys cause the wasd keys dont wanna cooperate?)
