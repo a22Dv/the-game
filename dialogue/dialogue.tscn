@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://be43aaykit87"]
+
+[ext_resource type="Texture2D" uid="uid://cte2nm11g3vrk" path="res://assets/inventory-background.png" id="1_k0ki1"]
+[ext_resource type="Script" uid="uid://de51lwuf2o6as" path="res://dialogue/dialogueplayer.gd" id="1_vigd0"]
+
+[node name="Dialogue" type="Control"]
+z_index = 75
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_vigd0")
+d_file = "<null>"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = -21.000002
+offset_top = -24.0
+offset_right = 56.0
+offset_bottom = 20.0
+scale = Vector2(0.535, 0.535)
+texture = ExtResource("1_k0ki1")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Name" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 3.7383213
+offset_top = 1.8691587
+offset_right = 88.73832
+offset_bottom = 25.86916
+scale = Vector2(0.535, 0.535)
+text = "name"
+
+[node name="Text" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 3.7383213
+offset_top = 11.214952
+offset_right = 155.851
+offset_bottom = 51.21495
+scale = Vector2(0.535, 0.535)
+text = "text ....."
