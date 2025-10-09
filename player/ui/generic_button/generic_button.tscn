@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsuqru0ekvk0c"]
+
+[ext_resource type="FontFile" uid="uid://dhy3vg0mk7frw" path="res://assets/fonts/Sweet Toffee.ttf" id="1_hov5d"]
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(50, 80)
+offset_right = 8.0
+offset_bottom = 8.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("1_hov5d")
+theme_override_font_sizes/font_size = 32
+text = "Button
+"

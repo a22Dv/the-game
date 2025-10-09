@@ -1,69 +1,110 @@
-[gd_scene load_steps=23 format=3 uid="uid://dstxb7yurg6tf"]
+[gd_scene load_steps=23 format=3 uid="uid://04vsv4mfmfeg"]
 
-[ext_resource type="Script" path="res://player/player.gd" id="1_rkbax"]
-[ext_resource type="Texture2D" uid="uid://dib3r1nl8fej7" path="res://assets/brackeys_platformer_assets/sprites/knight.png" id="2_g1dw6"]
-[ext_resource type="Texture2D" uid="uid://4s85uorb1am3" path="res://assets/brackeys_platformer_assets/sprites/fruit.png" id="2_qjkh3"]
-[ext_resource type="Texture2D" uid="uid://brfobjh7h8spt" path="res://assets/brackeys_platformer_assets/sprites/slime_purple.png" id="4_g6k8r"]
-[ext_resource type="Texture2D" uid="uid://ivw2eah2jra7" path="res://assets/brackeys_platformer_assets/sprites/slime_green.png" id="5_boad6"]
+[ext_resource type="Texture2D" uid="uid://4s85uorb1am3" path="res://assets/brackeys_platformer_assets/sprites/fruit.png" id="1_rw8k6"]
+[ext_resource type="Texture2D" uid="uid://dib3r1nl8fej7" path="res://assets/brackeys_platformer_assets/sprites/knight.png" id="2_v8d20"]
+[ext_resource type="Texture2D" uid="uid://brfobjh7h8spt" path="res://assets/brackeys_platformer_assets/sprites/slime_purple.png" id="3_rd04d"]
+[ext_resource type="Texture2D" uid="uid://ivw2eah2jra7" path="res://assets/brackeys_platformer_assets/sprites/slime_green.png" id="4_4nxn6"]
+
+[sub_resource type="GDScript" id="GDScript_gnm5x"]
+script/source = "extends CharacterBody2D
+
+@export var SPEED := 100.0
+@export var acceleration := 10.0
+
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
+var animation_direction: String = \"down_\"
+var animation_state: String = \"\"
+
+func update_sprite_direction(input: Vector2) -> void:
+	match input:
+		Vector2.DOWN:
+			animation_direction = \"down\"
+		Vector2.UP:
+				animation_direction = \"up\"
+		Vector2.RIGHT: 
+				animation_direction = \"right\"
+		Vector2.LEFT:
+				animation_direction = \"left\"
+	
+func update_sprite() -> void:
+	if velocity.length() > 0:
+		animation_state = \"move_\"
+	else:
+		animation_state = \"idle_\"
+
+func _physics_process(delta: float) -> void:
+	var direction := Input.get_vector(\"move_left\",\"move_right\",\"move_up\",\"move_down\")
+	
+	update_sprite_direction(direction)
+	update_sprite()
+	
+	animated_sprite_2d.play(animation_state+animation_direction)
+	
+	velocity.x = move_toward(velocity.x, direction.x*SPEED, acceleration)
+	velocity.y = move_toward(velocity.y, direction.y*SPEED, acceleration)
+	
+	move_and_collide(velocity*delta)
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rgyib"]
-atlas = ExtResource("2_qjkh3")
+atlas = ExtResource("1_rw8k6")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hg6s5"]
-atlas = ExtResource("2_qjkh3")
+atlas = ExtResource("1_rw8k6")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8t03j"]
-atlas = ExtResource("2_qjkh3")
+atlas = ExtResource("1_rw8k6")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yw30f"]
-atlas = ExtResource("2_g1dw6")
+atlas = ExtResource("2_v8d20")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qjkh3"]
-atlas = ExtResource("2_g1dw6")
+atlas = ExtResource("2_v8d20")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g6k8r"]
-atlas = ExtResource("2_g1dw6")
+atlas = ExtResource("2_v8d20")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_boad6"]
-atlas = ExtResource("2_g1dw6")
+atlas = ExtResource("2_v8d20")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ieo8"]
-atlas = ExtResource("4_g6k8r")
+atlas = ExtResource("3_rd04d")
 region = Rect2(0, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ebec5"]
-atlas = ExtResource("4_g6k8r")
+atlas = ExtResource("3_rd04d")
 region = Rect2(24, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yllr7"]
-atlas = ExtResource("4_g6k8r")
+atlas = ExtResource("3_rd04d")
 region = Rect2(48, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kb6p2"]
-atlas = ExtResource("4_g6k8r")
+atlas = ExtResource("3_rd04d")
 region = Rect2(72, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wodsf"]
-atlas = ExtResource("5_boad6")
+atlas = ExtResource("4_4nxn6")
 region = Rect2(0, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_32hag"]
-atlas = ExtResource("5_boad6")
+atlas = ExtResource("4_4nxn6")
 region = Rect2(24, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tqiix"]
-atlas = ExtResource("5_boad6")
+atlas = ExtResource("4_4nxn6")
 region = Rect2(48, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e7oew"]
-atlas = ExtResource("5_boad6")
+atlas = ExtResource("4_4nxn6")
 region = Rect2(72, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rgyib"]
@@ -160,7 +201,7 @@ height = 15.966613
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
-script = ExtResource("1_rkbax")
+script = SubResource("GDScript_gnm5x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
