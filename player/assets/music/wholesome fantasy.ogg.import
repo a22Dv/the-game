@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b8jvipcdsinpg"
+path="res://.godot/imported/wholesome fantasy.ogg-ca00163b2ce05f4a8837b6883829573b.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/wholesome fantasy.ogg"
+dest_files=["res://.godot/imported/wholesome fantasy.ogg-ca00163b2ce05f4a8837b6883829573b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

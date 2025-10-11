@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3f4c6um8ieiu"]
+
+[ext_resource type="Script" uid="uid://0vvtdhoj2rfv" path="res://ui/main_menu/main_menu.gd" id="1_uhj5c"]
+[ext_resource type="StyleBox" uid="uid://2o0fbcen3ov1" path="res://ui/main_menu/flat_panel_style.tres" id="2_i5wg5"]
+[ext_resource type="PackedScene" uid="uid://dlifu1dy3fmmo" path="res://ui/generic_text/generic_text.tscn" id="3_i5wg5"]
+[ext_resource type="PackedScene" uid="uid://dsuqru0ekvk0c" path="res://ui/generic_button/generic_button.tscn" id="3_omy8q"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_uhj5c")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 721.0
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("2_i5wg5")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" parent="Control/Panel/HBoxContainer" instance=ExtResource("3_i5wg5")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 128
+text = "Kaya Pa!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="NewGame" parent="Control/Panel/HBoxContainer/VBoxContainer" instance=ExtResource("3_omy8q")]
+layout_mode = 2
+text = "New Game"
+
+[node name="Continue" parent="Control/Panel/HBoxContainer/VBoxContainer" instance=ExtResource("3_omy8q")]
+layout_mode = 2
+text = "Continue"
+
+[node name="Settings" parent="Control/Panel/HBoxContainer/VBoxContainer" instance=ExtResource("3_omy8q")]
+layout_mode = 2
+text = "Settings"
+
+[node name="Quit" parent="Control/Panel/HBoxContainer/VBoxContainer" instance=ExtResource("3_omy8q")]
+layout_mode = 2
+text = "Quit
+"

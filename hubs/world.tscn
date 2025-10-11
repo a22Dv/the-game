@@ -1,0 +1,164 @@
+[gd_scene load_steps=6 format=3 uid="uid://7bnru47v81sy"]
+
+[ext_resource type="PackedScene" uid="uid://dstxb7yurg6tf" path="res://player/player.tscn" id="1_p0a8v"]
+[ext_resource type="PackedScene" uid="uid://be43aaykit87" path="res://dialogue/dialogue.tscn" id="3_ad5ln"]
+[ext_resource type="Texture2D" uid="uid://cte2nm11g3vrk" path="res://assets/party assets/inventory-background.png" id="4_ad5ln"]
+[ext_resource type="PackedScene" uid="uid://bdij7j4qr7lav" path="res://party scene/npc.tscn" id="5_ad5ln"]
+[ext_resource type="Script" uid="uid://drldlq0ma6wln" path="res://party scene/mission_panel.gd" id="5_sfg1l"]
+
+[node name="world" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_p0a8v")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(4, 4)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Dialogue" parent="UI" instance=ExtResource("3_ad5ln")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(7.105, 7.105)
+
+[node name="MissionPanel" type="TextureRect" parent="UI"]
+custom_minimum_size = Vector2(250, 150)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -267.00006
+offset_top = 3.0
+offset_right = -17.0
+offset_bottom = 153.0
+grow_horizontal = 0
+scale = Vector2(0.71, 0.71)
+texture = ExtResource("4_ad5ln")
+stretch_mode = 3
+script = ExtResource("5_sfg1l")
+
+[node name="Title" type="Label" parent="UI/MissionPanel"]
+layout_mode = 0
+offset_left = -150.0
+offset_top = 32.0
+offset_right = 34.0
+offset_bottom = 55.0
+scale = Vector2(2, 2)
+text = "title"
+
+[node name="MissionDescription" type="RichTextLabel" parent="UI/MissionPanel"]
+layout_mode = 0
+offset_left = -149.0
+offset_top = 89.0
+offset_right = 134.5
+offset_bottom = 129.0
+scale = Vector2(2, 2)
+text = "mission desc"
+
+[node name="NPCList" type="VBoxContainer" parent="UI/MissionPanel"]
+layout_mode = 0
+offset_left = -148.0
+offset_top = 137.635
+offset_right = 36.0
+offset_bottom = 295.635
+scale = Vector2(2, 2)
+
+[node name="Jeremih" type="HBoxContainer" parent="UI/MissionPanel/NPCList"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="UI/MissionPanel/NPCList/Jeremih"]
+layout_mode = 2
+text = "name"
+
+[node name="Check" type="Label" parent="UI/MissionPanel/NPCList/Jeremih"]
+layout_mode = 2
+text = "check"
+
+[node name="Princess Salazar" type="HBoxContainer" parent="UI/MissionPanel/NPCList"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="UI/MissionPanel/NPCList/Princess Salazar"]
+layout_mode = 2
+text = "name"
+
+[node name="Check" type="Label" parent="UI/MissionPanel/NPCList/Princess Salazar"]
+layout_mode = 2
+text = "check"
+
+[node name="Samantha \'sammie\' Kho" type="HBoxContainer" parent="UI/MissionPanel/NPCList"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="UI/MissionPanel/NPCList/Samantha \'sammie\' Kho"]
+layout_mode = 2
+text = "name"
+
+[node name="Check" type="Label" parent="UI/MissionPanel/NPCList/Samantha \'sammie\' Kho"]
+layout_mode = 2
+text = "check"
+
+[node name="Glenn Carew-Gibbs" type="HBoxContainer" parent="UI/MissionPanel/NPCList"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="UI/MissionPanel/NPCList/Glenn Carew-Gibbs"]
+layout_mode = 2
+text = "name"
+
+[node name="Check" type="Label" parent="UI/MissionPanel/NPCList/Glenn Carew-Gibbs"]
+layout_mode = 2
+text = "check"
+
+[node name="Arvin Provido III" type="HBoxContainer" parent="UI/MissionPanel/NPCList"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="UI/MissionPanel/NPCList/Arvin Provido III"]
+layout_mode = 2
+text = "name"
+
+[node name="Check" type="Label" parent="UI/MissionPanel/NPCList/Arvin Provido III"]
+layout_mode = 2
+text = "check"
+
+[node name="Magdaleine Nicole Stalley" type="HBoxContainer" parent="UI/MissionPanel/NPCList"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="UI/MissionPanel/NPCList/Magdaleine Nicole Stalley"]
+layout_mode = 2
+text = "name"
+
+[node name="Check" type="Label" parent="UI/MissionPanel/NPCList/Magdaleine Nicole Stalley"]
+layout_mode = 2
+text = "check"
+
+[node name="TotalLabel" type="Label" parent="UI/MissionPanel"]
+layout_mode = 0
+offset_left = -153.0
+offset_top = 456.75
+offset_right = 29.5
+offset_bottom = 479.75006
+scale = Vector2(2, 2)
+text = "total"
+
+[node name="Jeremih" parent="." instance=ExtResource("5_ad5ln")]
+position = Vector2(-112, 72)
+
+[node name="Princess Salazar" parent="." instance=ExtResource("5_ad5ln")]
+position = Vector2(-184, -3)
+
+[node name="Samantha \'sammie\' Kho" parent="." instance=ExtResource("5_ad5ln")]
+position = Vector2(-49, -108)
+
+[node name="Glenn Carew-Gibbs" parent="." instance=ExtResource("5_ad5ln")]
+position = Vector2(119, 78)
+
+[node name="Arvin Provido III" parent="." instance=ExtResource("5_ad5ln")]
+position = Vector2(106, -94)
+
+[node name="Magdaleine Nicole Stalley" parent="." instance=ExtResource("5_ad5ln")]
+position = Vector2(-162, -141)

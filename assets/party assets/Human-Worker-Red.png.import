@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cte2nm11g3vrk"
-path="res://.godot/imported/inventory-background.png-97598525656a78a4fd6126e91dd7b752.ctex"
+uid="uid://byicjprh8agko"
+path="res://.godot/imported/Human-Worker-Red.png-ea6632a84fbd7543b28ce2c12f57d63b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/inventory-background.png"
-dest_files=["res://.godot/imported/inventory-background.png-97598525656a78a4fd6126e91dd7b752.ctex"]
+source_file="res://assets/party assets/Human-Worker-Red.png"
+dest_files=["res://.godot/imported/Human-Worker-Red.png-ea6632a84fbd7543b28ce2c12f57d63b.ctex"]
 
 [params]
 
