@@ -1,0 +1,179 @@
+[gd_scene load_steps=11 format=3 uid="uid://blrpqoj382ijb"]
+
+[ext_resource type="Script" uid="uid://bi2bv2yopunpb" path="res://hubs/cafe.gd" id="1_hrd6q"]
+[ext_resource type="PackedScene" uid="uid://bvyqsn2rl1xyo" path="res://assets/cafe/character/charcafe.tscn" id="2_hrd6q"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tuaob"]
+load_path = "res://.godot/imported/concept.png-71faf70a504859ffb2273fc90f49cbbd.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tuaob"]
+size = Vector2(1280, 143.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4iaa"]
+size = Vector2(114, 920)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrd6q"]
+size = Vector2(557, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpsbr"]
+size = Vector2(73, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_173e6"]
+size = Vector2(92, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7eok3"]
+size = Vector2(141, 53)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_hrd6q"]
+vertices = PackedVector2Array(482, 201.5625, 482, 162, 646, 162, 646, 181, 716.6719, 234, 1270, 234, 1270, 710, 1130, 622, 1130, 710, 926, 622, 926, 710, 634, 710, 634, 670, 54, 670, 54, 710, 10, 710, 10, 366, -246, 366, -246, 210, 10, 210, 287.59375, 210.39063, 10, 162, 279.53125, 162)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(6, 8, 7), PackedInt32Array(4, 7, 9), PackedInt32Array(9, 10, 11, 12, 4), PackedInt32Array(13, 14, 15, 16), PackedInt32Array(16, 17, 18, 19, 20), PackedInt32Array(19, 21, 22, 20), PackedInt32Array(4, 12, 13, 16, 20, 0), PackedInt32Array(4, 0, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 152, 288, 152, 296, 200, 472, 192, 472, 152, 656, 152, 656, 176, 720, 224, 1280, 224, 1280, 720, 1120, 720, 1120, 632, 936, 632, 936, 720, 624, 720, 624, 680, 64, 680, 64, 720, 0, 720, 0, 376, -256, 376, -256, 200, 0, 200)])
+
+[node name="cafe" type="Node2D"]
+script = ExtResource("1_hrd6q")
+
+[node name="Tables" type="Node2D" parent="."]
+
+[node name="Table1" type="Node2D" parent="Tables"]
+
+[node name="table1sprite" type="Sprite2D" parent="Tables/Table1"]
+
+[node name="Table2" type="Node2D" parent="Tables"]
+
+[node name="table2sprite" type="Sprite2D" parent="Tables/Table2"]
+
+[node name="Table3" type="Node2D" parent="Tables"]
+
+[node name="table3sprite" type="Sprite2D" parent="Tables/Table3"]
+
+[node name="Table4" type="Node2D" parent="Tables"]
+
+[node name="table4sprite" type="Sprite2D" parent="Tables/Table4"]
+
+[node name="bg" type="Node2D" parent="."]
+
+[node name="bgsprite" type="Sprite2D" parent="bg"]
+position = Vector2(640, 360)
+scale = Vector2(0.7356321, 0.75)
+texture = SubResource("CompressedTexture2D_tuaob")
+
+[node name="char" parent="bg" instance=ExtResource("2_hrd6q")]
+position = Vector2(50, 300)
+
+[node name="collisions" type="Node2D" parent="."]
+
+[node name="walls" type="StaticBody2D" parent="collisions"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/walls"]
+position = Vector2(640, 64.125)
+shape = SubResource("RectangleShape2D_tuaob")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="collisions/walls"]
+position = Vector2(640, 792)
+shape = SubResource("RectangleShape2D_tuaob")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="collisions/walls"]
+position = Vector2(-57, 460)
+shape = SubResource("RectangleShape2D_r4iaa")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="collisions/walls"]
+position = Vector2(1336, 456)
+shape = SubResource("RectangleShape2D_r4iaa")
+
+[node name="objects" type="StaticBody2D" parent="collisions"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="table1" type="CollisionPolygon2D" parent="collisions/objects"]
+polygon = PackedVector2Array(208, 200, 288, 200, 376, 224, 472, 200, 536, 200, 536, 120, 208, 120)
+
+[node name="table2" type="CollisionPolygon2D" parent="collisions/objects"]
+polygon = PackedVector2Array(264, 448, 208, 448, 208, 464, 520, 464, 520, 456, 440, 456, 416, 400, 272, 400)
+
+[node name="table3" type="CollisionPolygon2D" parent="collisions/objects"]
+polygon = PackedVector2Array(856, 432, 816, 432, 816, 456, 1096, 456, 1096, 424, 1064, 424, 1024, 392, 880, 392)
+
+[node name="table4" type="CollisionPolygon2D" parent="collisions/objects"]
+polygon = PackedVector2Array(936, 656, 792, 680, 792, 720, 1232, 720, 1232, 648, 1144, 648, 1104, 616, 960, 616)
+
+[node name="bartable" type="CollisionShape2D" parent="collisions/objects"]
+position = Vector2(337.5, 696)
+shape = SubResource("RectangleShape2D_hrd6q")
+
+[node name="counter" type="CollisionPolygon2D" parent="collisions/objects"]
+position = Vector2(337.5, 696)
+polygon = PackedVector2Array(318.5, -560, 374.5, -512, 942.5, -512, 942.5, -624, 334.5, -624)
+
+[node name="sitting area" type="Node2D" parent="collisions"]
+
+[node name="left" type="Area2D" parent="collisions/sitting area"]
+
+[node name="1" type="CollisionShape2D" parent="collisions/sitting area/left"]
+position = Vector2(243.5, 199.5)
+shape = SubResource("RectangleShape2D_lpsbr")
+
+[node name="2" type="CollisionShape2D" parent="collisions/sitting area/left"]
+position = Vector2(244, 464)
+shape = SubResource("RectangleShape2D_173e6")
+
+[node name="3" type="CollisionShape2D" parent="collisions/sitting area/left"]
+position = Vector2(856, 456)
+shape = SubResource("RectangleShape2D_173e6")
+
+[node name="4" type="CollisionShape2D" parent="collisions/sitting area/left"]
+position = Vector2(840, 680)
+shape = SubResource("RectangleShape2D_173e6")
+
+[node name="right" type="Area2D" parent="collisions/sitting area"]
+
+[node name="1" type="CollisionShape2D" parent="collisions/sitting area/right"]
+position = Vector2(504, 208)
+shape = SubResource("RectangleShape2D_lpsbr")
+
+[node name="2" type="CollisionShape2D" parent="collisions/sitting area/right"]
+position = Vector2(480, 464)
+shape = SubResource("RectangleShape2D_173e6")
+
+[node name="3" type="CollisionShape2D" parent="collisions/sitting area/right"]
+position = Vector2(1056, 456)
+shape = SubResource("RectangleShape2D_173e6")
+
+[node name="4" type="CollisionShape2D" parent="collisions/sitting area/right"]
+position = Vector2(1192, 680)
+shape = SubResource("RectangleShape2D_173e6")
+
+[node name="bar" type="Area2D" parent="collisions/sitting area"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/sitting area/bar"]
+position = Vector2(209.5, 650.5)
+shape = SubResource("RectangleShape2D_7eok3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="collisions/sitting area/bar"]
+position = Vector2(464, 656)
+shape = SubResource("RectangleShape2D_7eok3")
+
+[node name="customer_timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="customer_pathing" type="Node2D" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="customer_pathing"]
+navigation_polygon = SubResource("NavigationPolygon_hrd6q")
+
+[node name="obstacles" type="Node2D" parent="customer_pathing"]
+
+[node name="outer obstacles" type="NavigationObstacle2D" parent="customer_pathing/obstacles"]
+vertices = PackedVector2Array(0, 0, 0, 160, 288, 160, 296, 200, 472, 200, 472, 160, 664, 160, 720, 200, 1280, 200, 1280, 544, 1280, 720, 1168, 720, 1112, 720, 1112, 608, 944, 608, 944, 720, 620, 720, 624, 672, 56, 672, 64, 720, 0, 720, 0, 16, -64, 16, -56, 776, 1088, 800, 1272, 792, 1400, 752, 1392, 120, 1280, -8)
+
+[node name="table 2" type="NavigationObstacle2D" parent="customer_pathing/obstacles"]
+vertices = PackedVector2Array(248, 384, 456, 384, 456, 416, 392, 416, 392, 448, 312, 448, 312, 416, 248, 416)
+
+[node name="table 3" type="NavigationObstacle2D" parent="customer_pathing/obstacles"]
+vertices = PackedVector2Array(864, 376, 1032, 376, 1032, 408, 1000, 408, 1000, 440, 936, 440, 936, 408, 864, 400)
+
+[node name="customers" type="Node2D" parent="."]
+
+[connection signal="timeout" from="customer_timer" to="." method="_on_customer_timer_timeout"]

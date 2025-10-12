@@ -1,25 +1,25 @@
-[gd_scene load_steps=9 format=3 uid="uid://gkiqdo3viohb"]
+[gd_scene load_steps=9 format=3 uid="uid://bvyqsn2rl1xyo"]
 
-[ext_resource type="Texture2D" uid="uid://brirn1mr774qk" path="res://miscellaneous/assets/Platformer/character/knight.png" id="1_c8b2b"]
-[ext_resource type="Script" uid="uid://c1u7och14pa4m" path="res://assets/Platformer/character/playerMovment.gd" id="1_go43p"]
+[ext_resource type="Script" uid="uid://cjspktk0hacp6" path="res://assets/cafe/character/charcafe.gd" id="1_0jvue"]
+[ext_resource type="Texture2D" uid="uid://brirn1mr774qk" path="res://miscellaneous/assets/Platformer/character/knight.png" id="2_qcjty"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p7fn3"]
-atlas = ExtResource("1_c8b2b")
+atlas = ExtResource("2_qcjty")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kq07r"]
-atlas = ExtResource("1_c8b2b")
+atlas = ExtResource("2_qcjty")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0qv2x"]
-atlas = ExtResource("1_c8b2b")
+atlas = ExtResource("2_qcjty")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lno62"]
-atlas = ExtResource("1_c8b2b")
+atlas = ExtResource("2_qcjty")
 region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_whs7s"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_tioeu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -39,21 +39,22 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c8b2b"]
-radius = 5.0
-height = 10.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gmf8t"]
+radius = 6.0
+height = 16.0
 
-[node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_go43p")
+[node name="charcafe" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_0jvue")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(6, -14)
-sprite_frames = SubResource("SpriteFrames_whs7s")
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_tioeu")
 autoplay = "default"
-frame = 3
-frame_progress = 0.506651
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(6, -7)
-shape = SubResource("CapsuleShape2D_c8b2b")
+position = Vector2(6, -11)
+scale = Vector2(2, 2)
+shape = SubResource("CapsuleShape2D_gmf8t")

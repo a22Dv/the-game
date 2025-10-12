@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://h8yuo7l3x8f4"]
+
+[ext_resource type="Script" uid="uid://ci5nkaocuhuy5" path="res://assets/cafe/customers/customer.gd" id="1_wbp0i"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hruja"]
+radius = 16.0
+height = 64.0
+
+[node name="customer" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_wbp0i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 0)
+scale = Vector2(0.26666668, 0.29333332)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_hruja")
