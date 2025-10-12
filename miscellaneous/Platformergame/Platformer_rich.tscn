@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c51gtdbrb76ea"]
+[gd_scene load_steps=11 format=3 uid="uid://c51gtdbrb76ea"]
 
+[ext_resource type="Script" uid="uid://cmjsrmqq088d6" path="res://miscellaneous/assets/Platformer/Scripts/platformer_rich.gd" id="1_l1qbw"]
 [ext_resource type="PackedScene" uid="uid://gkiqdo3viohb" path="res://miscellaneous/assets/Platformer/character/player.tscn" id="1_shjqj"]
 [ext_resource type="Script" uid="uid://cbviiit8eoepd" path="res://miscellaneous/assets/Platformer/character/platform_movement.gd" id="2_jfd41"]
 [ext_resource type="Texture2D" uid="uid://bxejq0l25wos6" path="res://miscellaneous/assets/Platformer/Platform/world_tileset.png" id="3_jfd41"]
+[ext_resource type="Script" uid="uid://d4awotn7edj0o" path="res://miscellaneous/assets/Platformer/Scripts/platform.gd" id="5_s3h6t"]
+[ext_resource type="FontFile" uid="uid://7l85mhmq5igt" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="6_k5kmo"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8aaql"]
 distance = -19.0
@@ -141,16 +144,16 @@ texture = ExtResource("3_jfd41")
 sources/0 = SubResource("TileSetAtlasSource_5l72q")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jfd41"]
-size = Vector2(158.5, 13)
+size = Vector2(120.125, 19)
 
 [node name="PlatformerRich" type="Node2D"]
+script = ExtResource("1_l1qbw")
 
 [node name="Player" parent="." instance=ExtResource("1_shjqj")]
 position = Vector2(23, -29)
 script = ExtResource("2_jfd41")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(19, -69)
+[node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -160,13 +163,26 @@ position = Vector2(28, -22)
 shape = SubResource("WorldBoundaryShape2D_8aaql")
 
 [node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-9, 1)
 tile_set = SubResource("TileSet_btuhi")
 format = 2
-layer_0/tile_data = PackedInt32Array(65533, 458752, 0, 65534, 458752, 0, 65535, 458752, 0, 0, 458752, 0, 1, 458752, 0, 2, 458752, 0, 3, 458752, 0, 4, 458752, 0, 5, 458752, 0, 6, 458752, 0, 7, 458752, 0, 8, 458752, 0, 9, 458752, 0, 10, 458752, 0, -196604, 458752, 0, -196603, 458752, 0, -196602, 458752, 0, -196601, 458752, 0, -196600, 458752, 0, -196599, 458752, 0, -196598, 458752, 0, -196597, 458752, 0, -196596, 458752, 0, -196595, 458752, 0)
+layer_0/tile_data = PackedInt32Array(65533, 458752, 0, 65534, 458752, 0, 65535, 458752, 0, 0, 458752, 0, 1, 458752, 0, 2, 458752, 0, 3, 458752, 0, 4, 458752, 0, 5, 458752, 0, 6, 458752, 0, 7, 458752, 0, 8, 458752, 0, 9, 458752, 0, 10, 458752, 0)
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+[node name="platform" type="Sprite2D" parent="."]
+position = Vector2(80, -45)
+centered = false
+script = ExtResource("5_s3h6t")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(146, -40)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform"]
+position = Vector2(30.9375, 1)
 shape = SubResource("RectangleShape2D_jfd41")
-disabled = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="platform"]
+offset_left = -30.0
+offset_top = -8.0
+offset_right = 94.0
+offset_bottom = 15.0
+theme_override_fonts/normal_font = ExtResource("6_k5kmo")
+bbcode_enabled = true
+text = "[center]Airplane[center]"
+scroll_active = false
