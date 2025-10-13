@@ -8,11 +8,8 @@ func _ready() -> void:
 	
 	change_sprite_standing()
 	
-	#staring position for customers
+	#starting position for customers
 	position = Vector2(300, 288) 
-		
-	
-	
 	
 	
 
@@ -27,8 +24,9 @@ func change_sprite_sitting ():
 func _process(_delta: float) -> void:
 	pass
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(body: Node2D):
 	if body.is_in_group("sitting area"):
 		print("seat entered")
-	print("body entered")
-	print(body)
+		change_sprite_sitting()
+		
+	

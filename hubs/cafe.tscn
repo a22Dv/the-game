@@ -25,9 +25,9 @@ size = Vector2(92, 48)
 size = Vector2(141, 53)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_hrd6q"]
-vertices = PackedVector2Array(482, 201.5625, 482, 162, 646, 162, 646, 181, 716.6719, 234, 1270, 234, 1270, 710, 1130, 622, 1130, 710, 926, 622, 926, 710, 634, 710, 634, 670, 54, 670, 54, 710, 10, 710, 10, 366, -246, 366, -246, 210, 10, 210, 287.59375, 210.39063, 10, 162, 279.53125, 162)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(6, 8, 7), PackedInt32Array(4, 7, 9), PackedInt32Array(9, 10, 11, 12, 4), PackedInt32Array(13, 14, 15, 16), PackedInt32Array(16, 17, 18, 19, 20), PackedInt32Array(19, 21, 22, 20), PackedInt32Array(4, 12, 13, 16, 20, 0), PackedInt32Array(4, 0, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(0, 152, 288, 152, 296, 200, 472, 192, 472, 152, 656, 152, 656, 176, 720, 224, 1280, 224, 1280, 720, 1120, 720, 1120, 632, 936, 632, 936, 720, 624, 720, 624, 680, 64, 680, 64, 720, 0, 720, 0, 376, -256, 376, -256, 200, 0, 200)])
+vertices = PackedVector2Array(482, 201.5625, 482, 162, 646, 162, 646, 181, 716.6719, 234, 1270, 234, 1270, 710, 1130, 622, 1130, 710, 926, 622, 926, 710, 634, 710, 634, 670, 54, 670, 54, 710, 10, 710, 10, 366, -246, 366, -246, 242, 10, 242, 10, 162, 279.53125, 162, 287.59375, 210.39063)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(6, 8, 7), PackedInt32Array(4, 7, 9), PackedInt32Array(9, 10, 11, 12, 4), PackedInt32Array(13, 14, 15, 16), PackedInt32Array(16, 17, 18, 19), PackedInt32Array(19, 20, 21, 22), PackedInt32Array(4, 12, 13, 16, 19, 22, 0), PackedInt32Array(4, 0, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 152, 288, 152, 296, 200, 472, 192, 472, 152, 656, 152, 656, 176, 720, 224, 1280, 224, 1280, 720, 1120, 720, 1120, 632, 936, 632, 936, 720, 624, 720, 624, 680, 64, 680, 64, 720, 0, 720, 0, 376, -256, 376, -256, 232, 0, 232)])
 
 [node name="cafe" type="Node2D"]
 script = ExtResource("1_hrd6q")
@@ -106,53 +106,61 @@ shape = SubResource("RectangleShape2D_hrd6q")
 position = Vector2(337.5, 696)
 polygon = PackedVector2Array(318.5, -560, 374.5, -512, 942.5, -512, 942.5, -624, 334.5, -624)
 
-[node name="sitting area" type="Node2D" parent="collisions"]
+[node name="sitting_areas" type="Node2D" parent="collisions"]
 
-[node name="left" type="Area2D" parent="collisions/sitting area"]
+[node name="left" type="Area2D" parent="collisions/sitting_areas"]
+collision_layer = 2
+collision_mask = 3
 
-[node name="1" type="CollisionShape2D" parent="collisions/sitting area/left"]
+[node name="left1" type="CollisionShape2D" parent="collisions/sitting_areas/left"]
 position = Vector2(243.5, 199.5)
 shape = SubResource("RectangleShape2D_lpsbr")
 
-[node name="2" type="CollisionShape2D" parent="collisions/sitting area/left"]
+[node name="left2" type="CollisionShape2D" parent="collisions/sitting_areas/left"]
 position = Vector2(244, 464)
 shape = SubResource("RectangleShape2D_173e6")
 
-[node name="3" type="CollisionShape2D" parent="collisions/sitting area/left"]
+[node name="left3" type="CollisionShape2D" parent="collisions/sitting_areas/left"]
 position = Vector2(856, 456)
 shape = SubResource("RectangleShape2D_173e6")
 
-[node name="4" type="CollisionShape2D" parent="collisions/sitting area/left"]
+[node name="left4" type="CollisionShape2D" parent="collisions/sitting_areas/left"]
 position = Vector2(840, 680)
 shape = SubResource("RectangleShape2D_173e6")
 
-[node name="right" type="Area2D" parent="collisions/sitting area"]
+[node name="right" type="Area2D" parent="collisions/sitting_areas"]
+collision_layer = 2
+collision_mask = 3
 
-[node name="1" type="CollisionShape2D" parent="collisions/sitting area/right"]
+[node name="right1" type="CollisionShape2D" parent="collisions/sitting_areas/right"]
 position = Vector2(504, 208)
 shape = SubResource("RectangleShape2D_lpsbr")
 
-[node name="2" type="CollisionShape2D" parent="collisions/sitting area/right"]
+[node name="right2" type="CollisionShape2D" parent="collisions/sitting_areas/right"]
 position = Vector2(480, 464)
 shape = SubResource("RectangleShape2D_173e6")
 
-[node name="3" type="CollisionShape2D" parent="collisions/sitting area/right"]
+[node name="right3" type="CollisionShape2D" parent="collisions/sitting_areas/right"]
 position = Vector2(1056, 456)
 shape = SubResource("RectangleShape2D_173e6")
 
-[node name="4" type="CollisionShape2D" parent="collisions/sitting area/right"]
+[node name="right4" type="CollisionShape2D" parent="collisions/sitting_areas/right"]
 position = Vector2(1192, 680)
 shape = SubResource("RectangleShape2D_173e6")
 
-[node name="bar" type="Area2D" parent="collisions/sitting area"]
+[node name="bar" type="Area2D" parent="collisions/sitting_areas"]
+collision_layer = 2
+collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/sitting area/bar"]
+[node name="bar1" type="CollisionShape2D" parent="collisions/sitting_areas/bar"]
 position = Vector2(209.5, 650.5)
 shape = SubResource("RectangleShape2D_7eok3")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="collisions/sitting area/bar"]
+[node name="bar2" type="CollisionShape2D" parent="collisions/sitting_areas/bar"]
 position = Vector2(464, 656)
 shape = SubResource("RectangleShape2D_7eok3")
+
+[node name="Node2D" type="Node2D" parent="collisions/sitting_areas"]
 
 [node name="customer_timer" type="Timer" parent="."]
 wait_time = 5.0
