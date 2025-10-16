@@ -57,3 +57,5 @@ frame_progress = 0.506651
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6, -11)
 shape = SubResource("CapsuleShape2D_c8b2b")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
