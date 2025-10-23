@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://buiemnxobrwkl"]
+
+[ext_resource type="PackedScene" uid="uid://bdij7j4qr7lav" path="res://party scene/npcs/npc.tscn" id="1_kpero"]
+
+[node name="npc" instance=ExtResource("1_kpero")]
+npc_name = "Magdaleine"
+dialogue_file = "res://dialogues/magdaleine_dialogue.json"

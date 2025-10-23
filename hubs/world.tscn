@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://7bnru47v81sy"]
+[gd_scene load_steps=10 format=3 uid="uid://7bnru47v81sy"]
 
 [ext_resource type="PackedScene" uid="uid://dstxb7yurg6tf" path="res://player/player.tscn" id="1_p0a8v"]
 [ext_resource type="PackedScene" uid="uid://be43aaykit87" path="res://dialogue/dialogue.tscn" id="3_ad5ln"]
 [ext_resource type="Texture2D" uid="uid://cte2nm11g3vrk" path="res://assets/party assets/inventory-background.png" id="4_ad5ln"]
-[ext_resource type="PackedScene" uid="uid://bdij7j4qr7lav" path="res://party scene/npc.tscn" id="5_ad5ln"]
+[ext_resource type="PackedScene" uid="uid://bdij7j4qr7lav" path="res://party scene/npcs/npc.tscn" id="5_ad5ln"]
 [ext_resource type="Script" uid="uid://drldlq0ma6wln" path="res://party scene/mission_panel.gd" id="5_sfg1l"]
+[ext_resource type="PackedScene" uid="uid://din3b57a7nd7b" path="res://party scene/npcs/Princess.tscn" id="6_0x64y"]
+[ext_resource type="PackedScene" uid="uid://cyhgdxpfh2f32" path="res://party scene/npcs/Sammie.tscn" id="7_x64ef"]
+[ext_resource type="PackedScene" uid="uid://bps8flb6agloi" path="res://party scene/npcs/Glenn.tscn" id="9_hl6wm"]
+[ext_resource type="PackedScene" uid="uid://buiemnxobrwkl" path="res://party scene/npcs/Magdaleine.tscn" id="9_ls1wl"]
 
 [node name="world" type="Node"]
 
@@ -21,10 +25,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 0.0
-offset_bottom = 0.0
+offset_left = 4.0
+offset_top = -38.0
+offset_right = 24.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(7.105, 7.105)
@@ -45,6 +49,7 @@ stretch_mode = 3
 script = ExtResource("5_sfg1l")
 
 [node name="Title" type="Label" parent="UI/MissionPanel"]
+visible = false
 layout_mode = 0
 offset_left = -150.0
 offset_top = 32.0
@@ -114,17 +119,6 @@ text = "name"
 layout_mode = 2
 text = "check"
 
-[node name="Arvin Provido III" type="HBoxContainer" parent="UI/MissionPanel/NPCList"]
-layout_mode = 2
-
-[node name="NameLabel" type="Label" parent="UI/MissionPanel/NPCList/Arvin Provido III"]
-layout_mode = 2
-text = "name"
-
-[node name="Check" type="Label" parent="UI/MissionPanel/NPCList/Arvin Provido III"]
-layout_mode = 2
-text = "check"
-
 [node name="Magdaleine Nicole Stalley" type="HBoxContainer" parent="UI/MissionPanel/NPCList"]
 layout_mode = 2
 
@@ -145,20 +139,47 @@ offset_bottom = 479.75006
 scale = Vector2(2, 2)
 text = "total"
 
+[node name="FadeOverlay" type="ColorRect" parent="UI/MissionPanel"]
+visible = false
+layout_mode = 0
+offset_left = -1426.7605
+offset_top = -4.2253523
+offset_right = 377.46484
+offset_bottom = 1009.8592
+color = Color(0, 0, 0, 0)
+
+[node name="MissionCompleteLabel" type="Label" parent="UI/MissionPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -907.3943
+offset_top = 19.852112
+offset_right = -542.3943
+offset_bottom = 76.85212
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 41
+text = "Mission Complete!"
+
 [node name="Jeremih" parent="." instance=ExtResource("5_ad5ln")]
 position = Vector2(-112, 72)
+dialogue_file = "res://dialogue/json files/worket_dialogue_1.json"
 
-[node name="Princess Salazar" parent="." instance=ExtResource("5_ad5ln")]
-position = Vector2(-184, -3)
+[node name="Princess" parent="." instance=ExtResource("6_0x64y")]
+position = Vector2(-126, -55)
+npc_name = "Princess Salazar"
+dialogue_file = "res://dialogue/json files/princess_dialogue.json"
 
-[node name="Samantha \'sammie\' Kho" parent="." instance=ExtResource("5_ad5ln")]
-position = Vector2(-49, -108)
+[node name="Sammie" parent="." instance=ExtResource("7_x64ef")]
+position = Vector2(100, -43)
+npc_name = "Samantha 'sammie' Kho"
+dialogue_file = "res://dialogue/json files/sammie_dialogue.json"
 
-[node name="Glenn Carew-Gibbs" parent="." instance=ExtResource("5_ad5ln")]
-position = Vector2(119, 78)
+[node name="Glenn" parent="." instance=ExtResource("9_hl6wm")]
+position = Vector2(113, 67)
+npc_name = "Glenn Carew-Gibbs"
+dialogue_file = "res://dialogue/json files/glenn_dialogue.json"
 
-[node name="Arvin Provido III" parent="." instance=ExtResource("5_ad5ln")]
-position = Vector2(106, -94)
-
-[node name="Magdaleine Nicole Stalley" parent="." instance=ExtResource("5_ad5ln")]
-position = Vector2(-162, -141)
+[node name="Magdaleine" parent="." instance=ExtResource("9_ls1wl")]
+npc_name = "Magdaleine Nicole Stalley"
+dialogue_file = "res://dialogue/json files/magdaleine_dialogue.json"
