@@ -42,3 +42,12 @@ offset_right = 155.851
 offset_bottom = 51.21495
 scale = Vector2(0.535, 0.535)
 text = "text ....."
+
+[node name="Portrait" type="TextureRect" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 18.691591
+offset_top = -39.252335
+offset_right = 58.691597
+offset_bottom = 0.7476654
+expand_mode = 1
+stretch_mode = 5

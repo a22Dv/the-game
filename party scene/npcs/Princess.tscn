@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://din3b57a7nd7b"]
+
+[ext_resource type="PackedScene" uid="uid://bdij7j4qr7lav" path="res://party scene/npcs/npc.tscn" id="1_a4i7e"]
+
+[node name="npc" instance=ExtResource("1_a4i7e")]
+npc_name = "Princess"
+dialogue_file = "res://dialogues/princess_dialogue.json"

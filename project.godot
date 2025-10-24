@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 GlobalManager="*res://globals/global_manager.gd"
 AudioManager="*res://globals/audio_manager.gd"
-QuestManager="*res://party scene/QuestManager.gd"
+QuestManager="*res://globals/QuestManager.gd"
 
 [display]
 
