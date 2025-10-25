@@ -1,0 +1,172 @@
+[gd_scene load_steps=11 format=3 uid="uid://cbdgfhfg37vgn"]
+
+[ext_resource type="PackedScene" uid="uid://dstxb7yurg6tf" path="res://player/player.tscn" id="1_8uqu2"]
+[ext_resource type="Script" uid="uid://bwxqufu8b62hs" path="res://hubs/world_med.gd" id="1_gu3b5"]
+[ext_resource type="PackedScene" uid="uid://be43aaykit87" path="res://dialogue/dialogue.tscn" id="2_gu3b5"]
+[ext_resource type="Texture2D" uid="uid://cte2nm11g3vrk" path="res://assets/party assets/inventory-background.png" id="3_0xg5x"]
+[ext_resource type="Script" uid="uid://cn47fpr3utt7k" path="res://seminar scene/mission_panel_med.gd" id="4_8uqu2"]
+[ext_resource type="PackedScene" uid="uid://bdij7j4qr7lav" path="res://party scene/npcs/npc.tscn" id="5_t7fo0"]
+[ext_resource type="PackedScene" uid="uid://din3b57a7nd7b" path="res://party scene/npcs/Princess.tscn" id="6_prw7o"]
+[ext_resource type="PackedScene" uid="uid://cyhgdxpfh2f32" path="res://party scene/npcs/Sammie.tscn" id="7_1pqgh"]
+[ext_resource type="PackedScene" uid="uid://bps8flb6agloi" path="res://party scene/npcs/Glenn.tscn" id="8_ti7ui"]
+[ext_resource type="PackedScene" uid="uid://buiemnxobrwkl" path="res://party scene/npcs/Magdaleine.tscn" id="9_avaog"]
+
+[node name="world" type="Node"]
+script = ExtResource("1_gu3b5")
+
+[node name="Player" parent="." instance=ExtResource("1_8uqu2")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(4, 4)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Dialogue" parent="UI" instance=ExtResource("2_gu3b5")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -38.0
+offset_right = 24.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(7.105, 7.105)
+
+[node name="MissionPanel" type="TextureRect" parent="UI"]
+custom_minimum_size = Vector2(250, 150)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -267.00006
+offset_top = 3.0
+offset_right = -17.0
+offset_bottom = 153.0
+grow_horizontal = 0
+scale = Vector2(0.71, 0.71)
+texture = ExtResource("3_0xg5x")
+stretch_mode = 3
+script = ExtResource("4_8uqu2")
+
+[node name="Title" type="Label" parent="UI/MissionPanel"]
+visible = false
+layout_mode = 0
+offset_left = -150.0
+offset_top = 32.0
+offset_right = 34.0
+offset_bottom = 55.0
+scale = Vector2(2, 2)
+text = "title"
+
+[node name="MissionDescription" type="RichTextLabel" parent="UI/MissionPanel"]
+layout_mode = 0
+offset_left = -149.0
+offset_top = 89.0
+offset_right = 134.5
+offset_bottom = 129.0
+scale = Vector2(2, 2)
+text = "mission desc"
+
+[node name="NPCList" type="VBoxContainer" parent="UI/MissionPanel"]
+layout_mode = 0
+offset_left = -148.0
+offset_top = 137.635
+offset_right = 36.0
+offset_bottom = 295.635
+scale = Vector2(2, 2)
+
+[node name="Celeste De la Torre" type="HBoxContainer" parent="UI/MissionPanel/NPCList"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="UI/MissionPanel/NPCList/Celeste De la Torre"]
+layout_mode = 2
+text = "name"
+
+[node name="Check" type="Label" parent="UI/MissionPanel/NPCList/Celeste De la Torre"]
+layout_mode = 2
+text = "check"
+
+[node name="CJ Morales" type="HBoxContainer" parent="UI/MissionPanel/NPCList"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="UI/MissionPanel/NPCList/CJ Morales"]
+layout_mode = 2
+text = "name"
+
+[node name="Check" type="Label" parent="UI/MissionPanel/NPCList/CJ Morales"]
+layout_mode = 2
+text = "check"
+
+[node name="Abel Tabar" type="HBoxContainer" parent="UI/MissionPanel/NPCList"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="UI/MissionPanel/NPCList/Abel Tabar"]
+layout_mode = 2
+text = "name"
+
+[node name="Check" type="Label" parent="UI/MissionPanel/NPCList/Abel Tabar"]
+layout_mode = 2
+text = "check"
+
+[node name="TotalLabel" type="Label" parent="UI/MissionPanel"]
+layout_mode = 0
+offset_left = -153.0
+offset_top = 456.75
+offset_right = 29.5
+offset_bottom = 479.75006
+scale = Vector2(2, 2)
+text = "total"
+
+[node name="FadeOverlay" type="ColorRect" parent="UI/MissionPanel"]
+visible = false
+layout_mode = 0
+offset_left = -1426.7605
+offset_top = -4.2253523
+offset_right = 377.46484
+offset_bottom = 1009.8592
+color = Color(0, 0, 0, 0)
+
+[node name="MissionCompleteLabel" type="Label" parent="UI/MissionPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -907.3943
+offset_top = 19.852112
+offset_right = -542.3943
+offset_bottom = 76.85212
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 41
+text = "Mission Complete!"
+
+[node name="Edwin Gutierrez" parent="." instance=ExtResource("5_t7fo0")]
+position = Vector2(-112, 72)
+npc_name = "Edwin Gutierrez"
+dialogue_file = "res://dialogue/json files/worket_dialogue_1.json"
+
+[node name="Ysabelle Sanchez" parent="." instance=ExtResource("6_prw7o")]
+position = Vector2(-126, -55)
+npc_name = "Ysabelle Sanchez"
+dialogue_file = "res://dialogue/json files/princess_dialogue.json"
+
+[node name="Celeste De la Torre" parent="." instance=ExtResource("7_1pqgh")]
+position = Vector2(100, -43)
+npc_name = "Celeste De la Torre"
+dialogue_file = "res://dialogue/json files/sammie_dialogue.json"
+
+[node name="CJ Morales" parent="." instance=ExtResource("8_ti7ui")]
+position = Vector2(113, 67)
+npc_name = "CJ Morales"
+dialogue_file = "res://dialogue/json files/glenn_dialogue.json"
+
+[node name="Abel Tabar" parent="." instance=ExtResource("9_avaog")]
+position = Vector2(47, -1)
+npc_name = "Abel Tabar"
+dialogue_file = "res://dialogue/json files/magdaleine_dialogue.json"
+
+[node name="Noel Gonzales" parent="." instance=ExtResource("9_avaog")]
+position = Vector2(-55, -2)
+npc_name = "Noel Gonzales"
+dialogue_file = "res://dialogue/json files/magdaleine_dialogue.json"
