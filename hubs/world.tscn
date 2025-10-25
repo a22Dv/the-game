@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://7bnru47v81sy"]
+[gd_scene load_steps=11 format=3 uid="uid://7bnru47v81sy"]
 
+[ext_resource type="Script" uid="uid://c6i0b61qrarso" path="res://hubs/world_easy.gd" id="1_hl6wm"]
 [ext_resource type="PackedScene" uid="uid://dstxb7yurg6tf" path="res://player/player.tscn" id="1_p0a8v"]
 [ext_resource type="PackedScene" uid="uid://be43aaykit87" path="res://dialogue/dialogue.tscn" id="3_ad5ln"]
 [ext_resource type="Texture2D" uid="uid://cte2nm11g3vrk" path="res://assets/party assets/inventory-background.png" id="4_ad5ln"]
@@ -11,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://buiemnxobrwkl" path="res://party scene/npcs/Magdaleine.tscn" id="9_ls1wl"]
 
 [node name="world" type="Node"]
+script = ExtResource("1_hl6wm")
 
 [node name="Player" parent="." instance=ExtResource("1_p0a8v")]
 
@@ -49,7 +51,6 @@ stretch_mode = 3
 script = ExtResource("5_sfg1l")
 
 [node name="Title" type="Label" parent="UI/MissionPanel"]
-visible = false
 layout_mode = 0
 offset_left = -150.0
 offset_top = 32.0

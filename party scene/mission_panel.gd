@@ -29,7 +29,7 @@ func _ready() -> void:
 	
 	update_ui()
 
-	title_label.visible = false
+
 	mission_label.visible = false
 	
 	if Engine.has_singleton("QuestManager"):
