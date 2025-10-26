@@ -1,20 +1,27 @@
-[gd_scene load_steps=11 format=3 uid="uid://c51gtdbrb76ea"]
+[gd_scene load_steps=14 format=3 uid="uid://c51gtdbrb76ea"]
 
 [ext_resource type="Script" uid="uid://bvsji7w4wgl5g" path="res://miscellaneous/Platformergame/platformer_rich.gd" id="1_l1qbw"]
 [ext_resource type="PackedScene" uid="uid://gkiqdo3viohb" path="res://miscellaneous/assets/Platformer/character/player.tscn" id="1_shjqj"]
 [ext_resource type="Script" uid="uid://cbviiit8eoepd" path="res://miscellaneous/assets/Platformer/character/platform_movement.gd" id="2_jfd41"]
+[ext_resource type="FontFile" uid="uid://7l85mhmq5igt" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="4_8yxpi"]
 [ext_resource type="Texture2D" uid="uid://bxfq7ajdskoob" path="res://icon.svg" id="4_s3h6t"]
 [ext_resource type="Script" uid="uid://ggmvhggi3wq6" path="res://miscellaneous/Platformergame/collision_shape_2d.gd" id="5_8yxpi"]
 [ext_resource type="Script" uid="uid://d0w26sxno61m1" path="res://miscellaneous/Platformergame/platform.gd" id="5_k5kmo"]
-[ext_resource type="FontFile" uid="uid://dhy3vg0mk7frw" path="res://assets/fonts/Sweet Toffee.ttf" id="5_s3h6t"]
+[ext_resource type="Script" uid="uid://cw1qyxm4iu7n1" path="res://miscellaneous/Platformergame/spawn_portal.gd" id="8_rwmf0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5kmo"]
 size = Vector2(124, 20)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k5kmo"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_k5kmo"]
-distance = 67.76471
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8yxpi"]
+size = Vector2(127.2025, 105.41177)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwmf0"]
+size = Vector2(279.9691, 112.496704)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pe4tc"]
+size = Vector2(1227.7255, 112.496704)
 
 [node name="PlatformerRich" type="Node2D"]
 script = ExtResource("1_l1qbw")
@@ -22,25 +29,26 @@ script = ExtResource("1_l1qbw")
 [node name="PlatformContainer" type="Node2D" parent="."]
 
 [node name="Platform" type="Sprite2D" parent="PlatformContainer"]
-position = Vector2(105, -75)
+position = Vector2(140, 20)
 scale = Vector2(1, 0.18750003)
 texture = ExtResource("4_s3h6t")
 script = ExtResource("5_k5kmo")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PlatformContainer/Platform"]
 offset_left = -51.0
-offset_top = -10.666662
+offset_top = -15.999998
 offset_right = 58.0
-offset_bottom = 28.33333
+offset_bottom = 15.999994
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("5_s3h6t")
-theme_override_font_sizes/normal_font_size = 40
+theme_override_fonts/normal_font = ExtResource("4_8yxpi")
+theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 text = "[center]Work[center]"
+fit_content = true
 scroll_active = false
 
 [node name="Platform2" type="StaticBody2D" parent="PlatformContainer/Platform"]
-position = Vector2(-105, 399.99994)
+position = Vector2(-104, 399.99994)
 scale = Vector2(1, 5.3333325)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformContainer/Platform/Platform2"]
@@ -50,20 +58,24 @@ disabled = true
 script = ExtResource("5_8yxpi")
 
 [node name="Player" parent="." instance=ExtResource("1_shjqj")]
-position = Vector2(23, -29)
+position = Vector2(-61, -123)
+collision_mask = 3
 script = ExtResource("2_jfd41")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(4, 4)
+position = Vector2(10, -4)
+zoom = Vector2(2, 2)
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -133.0
-offset_top = -119.0
-offset_right = 191.0
-offset_bottom = 61.0
+offset_left = -387.0
+offset_top = -330.0
+offset_right = 757.0
+offset_bottom = 1299.0
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(26, -11)
+position = Vector2(-147.00002, -96)
 scale = Vector2(244.361, 13)
 physics_material_override = SubResource("PhysicsMaterial_k5kmo")
 
@@ -73,8 +85,46 @@ scale = Vector2(0.010262737, 0.010216347)
 texture = ExtResource("4_s3h6t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0.002046205, 0.07692307)
-scale = Vector2(0.010262736, 0.010216348)
-shape = SubResource("WorldBoundaryShape2D_k5kmo")
+position = Vector2(-0.0020459294, 0.15384626)
+scale = Vector2(0.010262737, 0.010216349)
+shape = SubResource("RectangleShape2D_8yxpi")
 one_way_collision = true
 one_way_collision_margin = 4.0
+
+[node name="Spawn_portal" type="Area2D" parent="."]
+position = Vector2(76, -277)
+rotation = 3.1503193
+collision_layer = 3
+script = ExtResource("8_rwmf0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawn_portal"]
+position = Vector2(200.46309, 54.50345)
+rotation = -0.0033456774
+shape = SubResource("RectangleShape2D_rwmf0")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Spawn_portal"]
+
+[node name="Marker2D" type="Marker2D" parent="Spawn_portal"]
+position = Vector2(193, -58)
+rotation = -0.0035111846
+scale = Vector2(10, 1)
+
+[node name="Fell_portal" type="Area2D" parent="."]
+position = Vector2(-172, 1206)
+collision_layer = 3
+script = ExtResource("8_rwmf0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fell_portal"]
+position = Vector2(355.11957, 45.734253)
+rotation = -0.0033456788
+shape = SubResource("RectangleShape2D_pe4tc")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Fell_portal"]
+
+[node name="Marker2D" type="Marker2D" parent="Fell_portal"]
+position = Vector2(350, -44)
+rotation = -0.0035111846
+scale = Vector2(60, 1)
+
+[connection signal="body_entered" from="Spawn_portal" to="Spawn_portal" method="_on_body_entered"]
+[connection signal="body_entered" from="Fell_portal" to="Fell_portal" method="_on_body_entered"]

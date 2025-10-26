@@ -7,7 +7,7 @@ extends Node2D
 var active_platform = null
 var current_letter_index : int = -1
 
-
+#takes input from prompt and compares it to nearest Richtextlabel in platform_container
 func find_new_active_platform(typed_character : String):
 	for platform in platform_container.get_children():
 		var prompt = platform.get_prompt()
@@ -19,27 +19,32 @@ func find_new_active_platform(typed_character : String):
 			active_platform = platform
 			current_letter_index = 1
 
-
+#takes user input and validates it
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed() and not event.is_echo():
 		var typed_event = event as InputEventKey
 		var key_typed = PackedByteArray([typed_event.unicode]).get_string_from_utf8()
 
-
+#uses find_new_active_platform function 
 		if active_platform == null:
 			find_new_active_platform(key_typed)
 		else:
 			var prompt = active_platform.get_prompt()
 			var next_character = prompt.substr(current_letter_index, 1)
-
+#compares the key_typed to next_character which is determined by the Richtextlabel
 			if key_typed == next_character:
 				print("Successfully typed %s" % key_typed)
 				current_letter_index += 1
-
+#checks the length of the current_letter index and stops key_typed
+#enables collision
+#resets active_platform variable to null
 				if current_letter_index == prompt.length():
 					print("Done")
 					current_letter_index = -1
 					$PlatformContainer/Platform/Platform2/CollisionShape2D.disabled = false
 					active_platform = null
+#For testing purposes 
 			else:
 				print("Incorrectly typed %s instead of %s" % [key_typed, next_character])
+
+	

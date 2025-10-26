@@ -1,6 +1,6 @@
 [gd_scene load_steps=37 format=3 uid="uid://cg6027eni8ful"]
 
-[ext_resource type="Script" uid="uid://pmyi3f5tggb4" path="res://hubs/papers.gd" id="1_o71ty"]
+[ext_resource type="Script" path="res://hubs/papers.gd" id="1_o71ty"]
 [ext_resource type="Texture2D" uid="uid://hdyi5ihjq0ph" path="res://assets/papers/bg.png" id="2_ykudq"]
 [ext_resource type="Texture2D" uid="uid://c247aec3hmi1p" path="res://assets/papers/text.png" id="3_17lw1"]
 [ext_resource type="Texture2D" uid="uid://43ldu2c3654g" path="res://assets/papers/clip.png" id="4_17lw1"]
@@ -35,7 +35,6 @@
 size = Vector2(407.24152, 359.5561)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jp0py"]
-load_path = "res://.godot/imported/Act 2.png-3132a2c18b7390c78826319f71001570.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_76ap6"]
 
